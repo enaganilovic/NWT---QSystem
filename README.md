@@ -5,21 +5,21 @@ MODUL 1: Opšti
 Prijava na sistem   
 Odjava sa sistema   
 
-MODUL 2: Upravljanje grupom 
-Kreiranje grupe 
-Izmjena grupe 
-Brisanje grupe 
-Pretraga grupe
+MODUL 2: Upravljanje grupom   
+Kreiranje grupe   
+Izmjena grupe   
+Brisanje grupe   
+Pretraga grupe  
 
-MODUL 3: Upravljanje testovima 
-Kreiranje testa 
-Izmjena testa 
-Brisanje testa 
-Pretraga testa
+MODUL 3: Upravljanje testovima   
+Kreiranje testa   
+Izmjena testa   
+Brisanje testa   
+Pretraga testa  
 
-MODUL 4: Feed 
-Primanje zahtjeva za polaganjem testa 
-Potvrda ili odbijanje zahtjeva
+MODUL 4: Feed   
+Primanje zahtjeva za polaganjem testa   
+Potvrda ili odbijanje zahtjeva  
 
-MODUL 5: Polaganje testa 
-Odgovaranje na pitanja uz vremensko ograničenje
+MODUL 5: Polaganje testa   
+Odgovaranje na pitanja uz vremensko ograničenje  
