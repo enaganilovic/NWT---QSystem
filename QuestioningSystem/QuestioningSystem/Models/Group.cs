@@ -12,8 +12,8 @@ namespace QuestioningSystem.Models
         public int ID { get; set; }
         public string Title { get; set; }
         public ApplicationUser Creator { get; set; }
-        public virtual ICollection<ApplicationUser> Members { get; set; }
-        public virtual ICollection<Test> Tests { get; set; }
+        public ICollection<ApplicationUser> Members { get; set; }
+        public ICollection<Test> Tests { get; set; }
         public Group()
         {
             Members = new HashSet<ApplicationUser>();

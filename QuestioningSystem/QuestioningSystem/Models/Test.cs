@@ -13,7 +13,7 @@ namespace QuestioningSystem.Models
         public ApplicationUser Creator { get; set; }
         public int Duration { get; set; }
         public DateTime DateTime { get; set; }
-        public virtual ICollection<Group> Groups { get; set; }
+        public  ICollection<Group> Groups { get; set; }
         public int Points { get; set; }
         public bool Active { get; set; }
         public Test()
