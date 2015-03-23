@@ -3,7 +3,7 @@
 
 * [Opis teme i moduli](https://github.com/enaganilovic/NWT---QSystem/wiki/Opis-teme-i-moduli)  
 * [Tehnološki stek](https://github.com/enaganilovic/NWT---QSystem/wiki/Tehnolo%C5%A1ki-stek)  
-* [ERD dijagram](https://github.com/enaganilovic/NWT---QSystem/wiki/ER-Dijagram) 
+* [ER dijagram](https://github.com/enaganilovic/NWT---QSystem/wiki/ER-Dijagram) 
 
   
 ### Tim:
