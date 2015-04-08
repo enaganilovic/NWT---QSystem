@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -36,29 +37,27 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public async Task<ActionResult> Login(LoginViewModel d)
         {
             if (ModelState.IsValid)
-            {
-                var user = await UserManager.FindAsync(model.UserName, model.Password);
-                if (user != null)
+            {            
+                var user = await UserManager.FindByNameAsync(d.UserName);
+                PasswordVerificationResult hashedNewPassword = UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, d.Password);
+                if (user != null && hashedNewPassword == PasswordVerificationResult.Success)
                 {
-                    await SignInAsync(user, model.RememberMe);
-                    return RedirectToLocal(returnUrl);
+                    await SignInAsync(user, isPersistent: false);
+                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
-                else
-                {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                else {
+                    ModelState.AddModelError("", "Invalid name or password.");
+                    return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
             }
-
+            return new JsonResult { Data = null };
             // If we got this far, something failed, redisplay form
-            return View(model);
         }
 
         //
@@ -73,7 +72,7 @@ namespace QuestioningSystem.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+         
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -98,7 +97,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/Disassociate
         [HttpPost]
-        [ValidateAntiForgeryToken]
+         
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
@@ -132,7 +131,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/Manage
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
             bool hasPassword = HasPassword();
@@ -184,7 +183,7 @@ namespace QuestioningSystem.Controllers
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+      
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
@@ -221,7 +220,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/LinkLogin
         [HttpPost]
-        [ValidateAntiForgeryToken]
+     
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
@@ -249,7 +248,7 @@ namespace QuestioningSystem.Controllers
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
+    
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
             if (User.Identity.IsAuthenticated)
@@ -286,7 +285,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
