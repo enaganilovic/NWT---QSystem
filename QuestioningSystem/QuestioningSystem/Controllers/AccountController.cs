@@ -4,12 +4,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using QuestioningSystem.Models;
+using System.Net.Mail;
+using System.Text;
+using System.Net;
 
 namespace QuestioningSystem.Controllers
 {
@@ -37,27 +39,36 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
+        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
-        public async Task<ActionResult> Login(LoginViewModel d)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
-            {            
-                var user = await UserManager.FindByNameAsync(d.UserName);
-                PasswordVerificationResult hashedNewPassword = UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, d.Password);
-                if (user != null && hashedNewPassword == PasswordVerificationResult.Success)
+            {
+                var user = await UserManager.FindAsync(model.UserName, model.Password);
+                if (user != null)
                 {
-                    await SignInAsync(user, isPersistent: false);
-                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                    if(user.ConfirmedEmail == true)
+                    {
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else 
+                    {
+                        ModelState.AddModelError("", "Confirm Email Address."); 
+                    }
                 }
-                else {
-                    ModelState.AddModelError("", "Invalid name or password.");
-                    return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
                 }
             }
-            return new JsonResult { Data = null };
+
             // If we got this far, something failed, redisplay form
+            return View(model);
         }
 
         //
@@ -70,34 +81,94 @@ namespace QuestioningSystem.Controllers
 
         //
         // POST: /Account/Register
-        [HttpPost]
-        [AllowAnonymous]
-         
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser() { UserName = model.UserName };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    AddErrors(result);
-                }
-            }
+       
+	
 
-            // If we got this far, something failed, redisplay form
+	// GET: /Account/ConfirmEmail 
+        [AllowAnonymous] 
+        public async Task<ActionResult> ConfirmEmail(string Token, string Email) 
+        { 
+            ApplicationUser user = this.UserManager.FindById(Token); 
+            if (user != null) 
+            { 
+                if (user.Email == Email) 
+                {
+                    user.ConfirmedEmail = true; 
+                    await UserManager.UpdateAsync(user); 
+                    await SignInAsync(user, isPersistent: false); 
+                    return RedirectToAction("Index", "Home", new { ConfirmedEmail = user.Email }); 
+                } 
+                else 
+                { 
+                    return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
+                } 
+            } 
+            else 
+            { 
+                return RedirectToAction("Confirm", "Account", new { Email = "" }); 
+            } 
+ 
+        } 
+ 
+ //// POST: /Account/Register 
+        [HttpPost] 
+        [AllowAnonymous] 
+        [ValidateAntiForgeryToken] 
+        public async Task<ActionResult> Register(RegisterViewModel model) 
+        { 
+            if (ModelState.IsValid) 
+            { 
+                var user = new ApplicationUser() { UserName = model.UserName }; 
+                user.Email = model.Email; 
+                user.ConfirmedEmail = false; 
+                var result = await UserManager.CreateAsync(user, model.Password); 
+                if (result.Succeeded) 
+                {
+
+                    var fromAddress = new MailAddress("questioningsystem@gmail.com", "From Questioning System");
+                    var toAddress = new MailAddress(model.Email, "To Name");
+                    const string fromPassword = "Volimjanjetinu";
+                    const string subject = "Email confirmation";
+                    
+                    var smtp = new SmtpClient
+                    {
+                        UseDefaultCredentials = false,
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                        Timeout = 20000
+                    };
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = subject,
+                        Body = string.Format("Dear {0}<BR/>Thank you for your registration, please click on the below link to comlete your registration: <a href=\"{1}\" title=\"User Email Confirm\">{1}</a>", user.UserName, Url.Action("ConfirmEmail", "Account", new { Token = user.Id, Email = user.Email }, Request.Url.Scheme)),
+                        IsBodyHtml = true
+                    })
+                    {
+                        smtp.Send(message);
+                    }
+                    return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
+                } 
+                else 
+                { 
+                    AddErrors(result); 
+                } 
+            } 
             return View(model);
         }
 
+        [AllowAnonymous]
+        public ActionResult Confirm(string Email)
+        {
+            ViewBag.Email = Email; return View();
+        }
+	
         //
         // POST: /Account/Disassociate
         [HttpPost]
-         
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
             ManageMessageId? message = null;
@@ -131,7 +202,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/Manage
         [HttpPost]
-        
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Manage(ManageUserViewModel model)
         {
             bool hasPassword = HasPassword();
@@ -183,7 +254,7 @@ namespace QuestioningSystem.Controllers
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
-      
+        [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
@@ -220,7 +291,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/LinkLogin
         [HttpPost]
-     
+        [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
         {
             // Request a redirect to the external login provider to link a login for the current user
@@ -248,7 +319,7 @@ namespace QuestioningSystem.Controllers
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
-    
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
             if (User.Identity.IsAuthenticated)
@@ -285,7 +356,7 @@ namespace QuestioningSystem.Controllers
         //
         // POST: /Account/LogOff
         [HttpPost]
-       
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
@@ -317,6 +388,9 @@ namespace QuestioningSystem.Controllers
             }
             base.Dispose(disposing);
         }
+
+
+
 
         #region Helpers
         // Used for XSRF protection when adding external logins
