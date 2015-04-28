@@ -20,7 +20,11 @@ textarea {
 .field-validation-error {
     color: #b94a48;
 }
-
+.labelStyle
+{
+    font-family: 'Estrangelo Edessa';
+    font-size: 20px;
+}
 .field-validation-valid {
     display: none;
 }

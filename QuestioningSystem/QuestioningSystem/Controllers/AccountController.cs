@@ -168,7 +168,8 @@ namespace QuestioningSystem.Controllers
         [AllowAnonymous]
         public ActionResult Confirm(string Email)
         {
-            ViewBag.Email = Email; return View();
+            //ViewBag.Email = Email; 
+            return View();
         }
 	
         //

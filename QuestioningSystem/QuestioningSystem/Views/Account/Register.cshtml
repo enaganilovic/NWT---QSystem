@@ -5,7 +5,76 @@
 
 <h2>@ViewBag.Title.</h2>
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<div ng-controller="RegisterController">
+    <form novalidate name="f2" ng-submit="Register()">
+      @*  <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@GetAntiForgeryToken()'"  />  *@
+        <div style="color:rgb(182, 255, 0)">{{Message}}</div>
+        <table style="border-collapse:collapse" ng-show="!IsLoggedIn">
+            <tr>
+                <td class="labelStyle" font">Username:</td>
+                <td>
+                    <input type="text" ng-model="UserName" name="rUserName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">Username required</span>*@
+                </td>
+            </tr>
+          
+            <tr>
+                <td class="labelStyle">Password:</td>
+                <td>
+                    <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            <tr>
+                <td class="labelStyle">Confirm Password:</td>
+                <td>
+                    <input type="password" ng-model="ConfirmedPassword" name="rCPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            
+             <tr>
+                <td class="labelStyle">Email:</td>
+                <td>
+                    <input type="text" ng-model="Email" name="rEmail" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            
+             <tr>
+                <td class="labelStyle">First Name:</td>
+                <td>
+                    <input type="text" ng-model="FirstName" name="rFirstName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            
+             <tr>
+                <td class="labelStyle">Last Name:</td>
+                <td>
+                    <input type="text" ng-model="LastName" name="rLastName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            
+             <tr>
+                <td class="labelStyle">Phone Number:</td>
+                <td>
+                    <input type="text" ng-model="PhoneNumber" name="rPhoneNumber" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            
+             <tr>
+                <td class="labelStyle">Age:</td>
+                <td>
+                    <input type="number" ng-model="Age" name="rAge" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Register" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+@*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
  
     <h4>Create a new account.</h4>
@@ -40,8 +109,9 @@
             <input type="submit" class="btn btn-default" value="Register" />
         </div>
     </div>
-}
+}*@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+ <script src="~/Scripts/AngularControllers/RegisterController.js"></script>
 }

@@ -13,14 +13,14 @@
         <div style="color:rgb(182, 255, 0)">{{Message}}</div>
         <table ng-show="!IsLoggedIn">
             <tr>
-                <td>Username:</td>
+                <td class="labelStyle">Username:</td>
                 <td>
                     <input type="text" ng-model="UserName" name="cUserName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
 @*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">Username required</span>*@
                 </td>
             </tr>
             <tr>
-                <td>Password:</td>
+                <td class="labelStyle">Password:</td>
                 <td>
                     <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
