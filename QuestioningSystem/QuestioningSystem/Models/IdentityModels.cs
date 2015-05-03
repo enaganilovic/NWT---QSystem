@@ -8,7 +8,11 @@ namespace QuestioningSystem.Models
     public class ApplicationUser : IdentityUser
     {
         public string Email { get; set; }
-        public bool ConfirmedEmail { get; set; } 
+        public bool ConfirmedEmail { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string PhoneNumber { get; set; }
+        public int Age { get; set; }
         public byte[] ProfilePicture { get; set; }
 
         public ICollection<Group> Groups { get; set; }
