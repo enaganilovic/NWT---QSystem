@@ -156,7 +156,7 @@ namespace QuestioningSystem.Controllers
                     {
                         smtp.Send(message);
                     }
-                    return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
+                    //return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
                 } 
                 else 
                 { 
@@ -166,8 +166,9 @@ namespace QuestioningSystem.Controllers
             else
             {
                 ViewBag.ErrMessage = "Error: captcha is not valid.";  
-            }
-            return View(model);
+            } 
+            return new JsonResult { Data = ModelState.IsValid, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            //return View(model);
         }
 
         [AllowAnonymous]
