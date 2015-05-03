@@ -1,4 +1,8 @@
-﻿@model QuestioningSystem.Models.RegisterViewModel
+﻿@using CaptchaMvc.HtmlHelpers
+@using CaptchaMvc;  
+
+
+@model QuestioningSystem.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
@@ -63,6 +67,16 @@
                 <td class="labelStyle">Age:</td>
                 <td>
                     <input type="number" ng-model="Age" name="rAge" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                </td>
+                <td>
+                    @Html.Captcha(5)
+                    <br />
+                    <p class="Error">  @ViewBag.ErrMessage </p> 
                 </td>
             </tr>
             <tr>

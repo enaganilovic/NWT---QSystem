@@ -12,7 +12,8 @@ using QuestioningSystem.Models;
 using System.Net.Mail;
 using System.Text;
 using System.Net;
-
+using CaptchaMvc;
+using CaptchaMvc.HtmlHelpers;
 namespace QuestioningSystem.Controllers
 {
     [Authorize]
@@ -122,7 +123,7 @@ namespace QuestioningSystem.Controllers
        // [ValidateAntiForgeryToken] 
         public async Task<ActionResult> Register(RegisterViewModel model) 
         { 
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid && this.IsCaptchaValid("Captcha is not valid")) 
             { 
                 var user = new ApplicationUser() { UserName = model.UserName }; 
                 user.Email = model.Email; 
@@ -161,7 +162,11 @@ namespace QuestioningSystem.Controllers
                 { 
                     AddErrors(result); 
                 } 
-            } 
+            }
+            else
+            {
+                ViewBag.ErrMessage = "Error: captcha is not valid.";  
+            }
             return View(model);
         }
 
