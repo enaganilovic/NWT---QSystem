@@ -155,14 +155,15 @@ namespace QuestioningSystem.Controllers
                     {
                         smtp.Send(message);
                     }
-                    return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
+                    //return RedirectToAction("Confirm", "Account", new { Email = user.Email }); 
                 } 
                 else 
                 { 
                     AddErrors(result); 
                 } 
-            } 
-            return View(model);
+            }
+            return new JsonResult { Data = ModelState.IsValid, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            //return View(model);
         }
 
         [AllowAnonymous]

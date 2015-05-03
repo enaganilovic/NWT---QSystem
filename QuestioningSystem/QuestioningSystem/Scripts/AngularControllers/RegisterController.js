@@ -26,10 +26,12 @@
         };
         $scope.Submitted = true;
         RegistrationService.GetUser(RegistrationData).then(function (d) {
-
-            $window.location = '/Account/Confirm';
-            $scope.Message = "Successfully logged in. Welcome";
-    
+            if (d.data) {
+                $window.location = '/Account/Confirm';
+                $scope.Message = "Successfully logged in. Welcome";
+            }
+            else 
+                $scope.Message = "Please fill in all required fields to complete registration."
     });
 
     };
