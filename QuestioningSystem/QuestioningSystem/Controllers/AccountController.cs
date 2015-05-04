@@ -123,7 +123,7 @@ namespace QuestioningSystem.Controllers
        // [ValidateAntiForgeryToken] 
         public async Task<ActionResult> Register(RegisterViewModel model) 
         { 
-            if (ModelState.IsValid && this.IsCaptchaValid("Captcha is not valid")) 
+            if (ModelState.IsValid) 
             { 
                 var user = new ApplicationUser() { UserName = model.UserName }; 
                 user.Email = model.Email; 
