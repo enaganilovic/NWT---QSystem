@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - QSystem</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,7 +18,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                @Html.ActionLink("News feed", "Index", "Home", null, new { @class = "navbar-brand" })
+                @Html.ActionLink(@_("News feed").ToString(), "Index", "Home", null, new { @class = "navbar-brand" })
                
      
          </div>
@@ -29,25 +29,27 @@
       <ul class="nav navbar-nav">
           
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tests <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@_("Tests") <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Create Test</a></li>
-            <li><a href="#">Manage Test</a></li>
-            <li><a href="#">My Test</a></li>
-             <li><a href="#">Explore Tests</a></li>
+            <li><a href="#">@_("New test")</a></li>
+            <li><a href="#">@_("Manage tests")</a></li>
+            <li><a href="#">@_("My tests")</a></li>
+             <li><a href="#">@_("Explore tests")</a></li>
             
           </ul>
         </li>
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Groups <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@_("Groups") <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Create Group</a></li>
-            <li><a href="#">Manage Group</a></li>
-             <li><a href="#">Delete Gruop</a></li>
+            <li><a href="#">@_("Create Group")</a></li>
+            <li><a href="#">@_("Manage Groups")</a></li>
+             <li><a href="#">@_("Delete Group")</a></li>
           </ul>
         </li>
-            <li>@Html.ActionLink("About", "About", "Home")</li>
-            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink(@_("About").ToString(), "About", "Home")</li>
+                    <li>@Html.ActionLink(@_("Contact").ToString(), "Contact", "Home")</li>
+                    <li><a href="@Url.Action("SetLanguage", "Language", new { @name = "hr-HR" })"><img height="30" width="30" src="~/Content/flag_of_bosnia_and_herzegovina.png"/></a></li>
+                    <li><a href="@Url.Action("SetLanguage", "Language", new { @name = "en-US" })"><img height="30" width="30" src="~/Content/united_kingdom_640.png"/></a></li>
       </ul>
      
       <ul class="nav navbar-nav navbar-right">
@@ -62,7 +64,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - @_("All rights reserved")</p>
         </footer>
     </div>
 

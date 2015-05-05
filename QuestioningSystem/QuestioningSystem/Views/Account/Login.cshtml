@@ -1,10 +1,10 @@
 ﻿@model QuestioningSystem.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = @_("Log in");
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>@ViewBag.Title</h2>
 
  
 <div ng-controller="LoginController">
@@ -13,14 +13,14 @@
         <div style="color:rgb(182, 255, 0)">{{Message}}</div>
         <table ng-show="!IsLoggedIn">
             <tr>
-                <td class="labelStyle">Username:</td>
+                <td class="labelStyle">@_("Username"):</td>
                 <td>
                     <input type="text" ng-model="UserName" name="cUserName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
-@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">Username required</span>*@
+@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">@_("Username required")</span>*@
                 </td>
             </tr>
             <tr>
-                <td class="labelStyle">Password:</td>
+                <td class="labelStyle">@_("Password"):</td>
                 <td>
                     <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
@@ -28,7 +28,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="@_("Login").ToString()" />
                 </td>
             </tr>
         </table>

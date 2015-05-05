@@ -1,0 +1,140 @@
+#: ..\Migrations\201503211837277_InitialCreate.Designer.cs:26
+msgid "Target"
+msgstr ""
+
+#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:20
+msgid "Log in"
+msgstr ""
+
+#: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+msgid "Username"
+msgstr ""
+
+#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
+msgid "Username required"
+msgstr ""
+
+#: ..\Views\Account\Login.cshtml:23 ..\Views\Account\Register.cshtml:28
+msgid "Password"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:7 ..\Views\Account\Register.cshtml:10
+#: ..\Views\Shared\_LoginPartial.cshtml:19
+msgid "Register"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:34
+msgid "Confirm Password"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:41
+msgid "Email"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:48
+msgid "First Name"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:55
+msgid "Last Name"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:62
+msgid "Phone Number"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:69
+msgid "Age"
+msgstr ""
+
+#: ..\Views\Account\_ChangePasswordPartial.cshtml:18
+msgid "Current Password"
+msgstr ""
+
+#: ..\Views\Account\_ChangePasswordPartial.cshtml:24
+msgid "New Password"
+msgstr ""
+
+#: ..\Views\Account\_ChangePasswordPartial.cshtml:30
+msgid "Confirm New Password"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
+msgid "About"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:5
+msgid "Your application description page"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:7
+msgid "Use this area to provide additional information"
+msgstr ""
+
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:50
+msgid "Contact"
+msgstr ""
+
+#: ..\Views\Home\Contact.cshtml:5
+msgid "Your contact page"
+msgstr ""
+
+#: ..\Views\Home\Contact.cshtml:15
+msgid "Support"
+msgstr ""
+
+#: ..\Views\Home\Index.cshtml:7
+msgid "Welcome to QSystem home page"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:21
+msgid "News feed"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:32
+msgid "Tests"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:34
+msgid "New test"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:35
+msgid "Manage tests"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:36
+msgid "My tests"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:37
+msgid "Explore tests"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:42
+msgid "Groups"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:44
+msgid "Create Group"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:45
+msgid "Manage Groups"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:46
+msgid "Delete Group"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:67
+msgid "All rights reserved"
+msgstr ""
+
+#: ..\Views\Shared\_LoginPartial.cshtml:4
+msgid "LogOff"
+msgstr ""
+
+#: ..\Views\Shared\_LoginPartial.cshtml:10
+msgid "Hello "
+msgstr ""

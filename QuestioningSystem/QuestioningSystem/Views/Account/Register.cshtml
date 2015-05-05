@@ -4,7 +4,7 @@
 
 @model QuestioningSystem.Models.RegisterViewModel
 @{
-    ViewBag.Title = @"Register";
+    ViewBag.Title = @_("Register");
 }
 
 <h2>@_("Register")</h2>
@@ -15,56 +15,58 @@
         <div style="color:rgb(255, 0, 0)">{{Message}}</div><br />
         <table style="border-collapse:collapse" ng-show="!IsLoggedIn">
             <tr>
-                <td class="labelStyle" font">@_("Username"):</td>
+                <td class="labelStyle" font">
+                @_("Username"):
+                </td>
                 <td>
                     <input type="text" ng-model="UserName" name="rUserName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
-@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">Username required</span>*@
+@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">@_("Username required")</span>*@
                 </td>
             </tr>
           
             <tr>
-                <td class="labelStyle">Password:</td>
+                <td class="labelStyle">@_("Password"):</td>
                 <td>
                     <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
             <tr>
-                <td class="labelStyle">Confirm Password:</td>
+                <td class="labelStyle">@_("Confirm Password"):</td>
                 <td>
                     <input type="password" ng-model="ConfirmedPassword" name="rCPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
             
              <tr>
-                <td class="labelStyle">Email:</td>
+                <td class="labelStyle">@_("Email"):</td>
                 <td>
                     <input type="text" ng-model="Email" name="rEmail" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
             
              <tr>
-                <td class="labelStyle">First Name:</td>
+                <td class="labelStyle">@_("First Name"):</td>
                 <td>
                     <input type="text" ng-model="FirstName" name="rFirstName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
             
              <tr>
-                <td class="labelStyle">Last Name:</td>
+                <td class="labelStyle">@_("Last Name"):</td>
                 <td>
                     <input type="text" ng-model="LastName" name="rLastName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
             
              <tr>
-                <td class="labelStyle">Phone Number:</td>
+                <td class="labelStyle">@_("Phone Number"):</td>
                 <td>
                     <input type="text" ng-model="PhoneNumber" name="rPhoneNumber" autofocus/>
                 </td>
             </tr>
             
              <tr>
-                <td class="labelStyle">Age:</td>
+                <td class="labelStyle">@_("Age"):</td>
                 <td>
                     <input type="number" ng-model="Age" name="rAge" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
@@ -83,7 +85,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Register" />
+                    <input type="submit" value="@_("Register").ToString()" />
                 </td>
             </tr>
         </table>
