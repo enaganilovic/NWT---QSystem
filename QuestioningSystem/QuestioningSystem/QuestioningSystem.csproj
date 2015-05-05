@@ -261,6 +261,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\AngularControllers\LoginController.js" />
     <Content Include="Scripts\AngularControllers\RegisterController.js" />
+    <Content Include="Scripts\AngularControllers\ResetController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
