@@ -1,0 +1,21 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Michael Wullink <michaelwullink@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ..\Migrations\201503211837277_InitialCreate.Designer.cs:26
+msgid "Target"
+msgstr ""
+
+#: ..\Views\Account\Register.cshtml:10
+msgid "Register"
+msgstr ""
+
+#~ msgid "Username"
+#~ msgstr "Username test"

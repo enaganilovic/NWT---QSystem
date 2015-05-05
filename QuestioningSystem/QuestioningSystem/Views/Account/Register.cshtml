@@ -4,10 +4,10 @@
 
 @model QuestioningSystem.Models.RegisterViewModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = @"Register";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>@_("Register")</h2>
 
 <div ng-controller="RegisterController">
     <form novalidate name="f2" ng-submit="Register()">
@@ -15,7 +15,7 @@
         <div style="color:rgb(255, 0, 0)">{{Message}}</div><br />
         <table style="border-collapse:collapse" ng-show="!IsLoggedIn">
             <tr>
-                <td class="labelStyle" font">Username:</td>
+                <td class="labelStyle" font">@_("Username"):</td>
                 <td>
                     <input type="text" ng-model="UserName" name="rUserName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
 @*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">Username required</span>*@
@@ -76,8 +76,8 @@
                 </td>
                 <td>
                     @*@Html.Captcha(5)*@
-                    <br />
-                    <p class="Error">  @ViewBag.ErrMessage </p> 
+                    @*<br />
+                    <p class="Error">  @ViewBag.ErrMessage </p> *@
                 </td>
             </tr>
             <tr>
