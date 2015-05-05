@@ -260,7 +260,9 @@ namespace QuestioningSystem.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return new JsonResult { Data = ModelState.IsValid, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+           // return View(model);
         }
 
         //
