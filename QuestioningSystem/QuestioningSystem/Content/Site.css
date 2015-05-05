@@ -45,3 +45,29 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
+h2 {
+    color: aquamarine;
+}
+
+h3
+{
+    color:#999999;
+}
+
+p, address
+{
+     color:#999999;
+}
+
+.dropdown-menu
+{
+    background-color: #999999;
+   
+}
+
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus
+    {
+        background-color:aquamarine;
+        color:#000000;
+    }
