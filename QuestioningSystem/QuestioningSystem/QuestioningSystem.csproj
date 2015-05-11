@@ -196,15 +196,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AnswerController.cs" />
-    <Compile Include="Controllers\CourseController.cs" />
-    <Compile Include="Controllers\FinishedTestController.cs" />
+    <Compile Include="ApiControllers\AnswerController.cs" />
+    <Compile Include="ApiControllers\CourseController.cs" />
+    <Compile Include="ApiControllers\FinishedTestController.cs" />
+    <Compile Include="ApiControllers\GroupController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
-    <Compile Include="Controllers\NotificationController.cs" />
-    <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="ApiControllers\NotificationController.cs" />
+    <Compile Include="ApiControllers\QuestionController.cs" />
+    <Compile Include="ApiControllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -221,6 +222,7 @@
     <Compile Include="Models\FinishedTests.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\GroupTest.cs" />
+    <Compile Include="Models\GroupViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListOfNotificationViewModel.cs" />
     <Compile Include="Models\Notification.cs" />
@@ -264,6 +266,7 @@
     <Content Include="Scripts\angular-touch.min.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularControllers\GroupController.js" />
     <Content Include="Scripts\AngularControllers\LoginController.js" />
     <Content Include="Scripts\AngularControllers\RegisterController.js" />
     <Content Include="Scripts\AngularControllers\ResetController.js" />
@@ -1063,6 +1066,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Group\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

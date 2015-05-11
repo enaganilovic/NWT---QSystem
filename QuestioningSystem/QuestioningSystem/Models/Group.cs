@@ -19,5 +19,7 @@ namespace QuestioningSystem.Models
             Members = new HashSet<ApplicationUser>();
             Tests = new HashSet<Test>();
         }
+        public int MaxNumberOfMembers { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }

@@ -1,106 +1,52 @@
-﻿using QuestioningSystem.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
+using QuestioningSystem.Models;
 
 namespace QuestioningSystem.Controllers
 {
-    public class GroupController : ApiController
+    public class GroupController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
-        // GET api/Group
-        public IEnumerable<Group> GetGroups()
+        //
+        // GET: /Group/
+        public ActionResult Index()
         {
-            var groups = db.Groups;
-            return groups.AsEnumerable();
+            return View();
         }
 
-        // GET api/Group/5
-        public Group GetGroup(int id)
+        public ActionResult Create()
         {
-            Group group = db.Groups.Find(id);
-            if (group == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
-
-            return group;
+            return View();
         }
 
-        // PUT api/Group/5
-        public HttpResponseMessage PutGroup(int id, Group group)
+        //[Authorize]
+        [HttpPost]
+        public async Task<ActionResult> SaveGroup(GroupViewModel model)
         {
-            if (ModelState.IsValid && id == group.ID)
+            var group = new Group();
+            if (model != null)
             {
-                db.Entry(group).State = EntityState.Modified;
-
-                try
+                using (var context = ApplicationDbContext.Create())
                 {
-                    db.SaveChanges();
+                    if (!string.IsNullOrWhiteSpace(User.Identity.Name))
+                    group.Creator.UserName = User.Identity.Name;
+                    group.MaxNumberOfMembers = model.MaxNumberOfMembers;
+                    group.Title = model.Title;
+                    group.CreationDate = DateTime.Now;
+                    context.Groups.Add(group);
+                    context.SaveChanges();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    return Request.CreateResponse(HttpStatusCode.NotFound);
-                }
-
-                return Request.CreateResponse(HttpStatusCode.OK);
+             
+              
+                return new JsonResult { Data = group, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
+                return new JsonResult { Data = "Could not save group.", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        // POST api/Group
-        public HttpResponseMessage PostGroup(Group group)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Groups.Add(group);
-                db.SaveChanges();
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, group);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = group.ID }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-        }
-
-        // DELETE api/Group/5
-        public HttpResponseMessage DeleteGroup(int id)
-        {
-            Group group = db.Groups.Find(id);
-            if (group == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            db.Groups.Remove(group);
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-
-            return Request.CreateResponse(HttpStatusCode.OK, group);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
-        }
-    }
+	}
 }

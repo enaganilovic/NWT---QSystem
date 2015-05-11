@@ -24,6 +24,7 @@ textarea {
 {
     font-family: 'Estrangelo Edessa';
     font-size: 20px;
+    color:bisque;
 }
 .field-validation-valid {
     display: none;
