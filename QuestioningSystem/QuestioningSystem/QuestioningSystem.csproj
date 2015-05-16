@@ -200,6 +200,7 @@
     <Compile Include="ApiControllers\CourseController.cs" />
     <Compile Include="ApiControllers\FinishedTestController.cs" />
     <Compile Include="ApiControllers\GroupController.cs" />
+    <Compile Include="Controllers\Alerts.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
