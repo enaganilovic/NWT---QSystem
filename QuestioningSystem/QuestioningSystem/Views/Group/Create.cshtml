@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+<div ng-controller="GroupController" onload="GetAllData()">
+    <form novalidate name="f3" ng-submit="CreateGroup()">
+        <div style="color:rgb(0, 255, 255)">{{Message}}</div><br />
+        <table style="border-collapse:collapse" ng-show="!IsLoggedIn">
+            <tr>
+                <td class="labelStyle" font">
+                @_("Group title"):
+                </td>
+                <td>
+                    <input type="text" ng-model="titleOfGroup" name="gTitle" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+@*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">@_("Username required")</span>*@
+                </td>
+            </tr>
+             <tr>
+                <td class="labelStyle">@_("Maximal number of members"):</td>
+                <td>
+                    <input type="number" ng-model="maxNumberOfMembers" name="rAge" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+            <tr>
+                <td>
+
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="@_("Create Group").ToString()" />
+                </td>
+            </tr>
+        </table>
+        <table id="submittedGroups">
+            <thead>
+            <tr>
+                <th>
+                    Title of Group                
+                </th>
+                <th>
+                    Max Number of members
+                </th>
+                <th>
+                    Creation Date
+                </th>
+                </thead>
+            <tbody>
+                 <div ng-repeat = "pers in awesomeData">
+                <tr>
+                    <td>{{pers.Title}}</td>
+                    <td>{{pers.MaxNumberOfMembers}}</td>
+                    <td>{{pers.CreationDate}}</td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+
+        </form>
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/AngularControllers/GroupController.js"></script>
+}
