@@ -53,6 +53,11 @@
         </li>
                     <li>@Html.ActionLink(@_("About").ToString(), "About", "Home")</li>
                     <li>@Html.ActionLink(@_("Contact").ToString(), "Contact", "Home")</li>
+                    @if(!User.IsInRole("Administrator"))
+{
+<li>@Html.ActionLink(@_("Admin Panel").ToString(), "AdminPanel", "Home")</li>
+}
+                    
                     <li><a href="@Url.Action("SetLanguage", "Language", new { @name = "hr-HR" })"><img height="30" width="30" src="~/Content/flag_of_bosnia_and_herzegovina.png"/></a></li>
                     <li><a href="@Url.Action("SetLanguage", "Language", new { @name = "en-US" })"><img height="30" width="30" src="~/Content/united_kingdom_640.png"/></a></li>
       </ul>

@@ -1073,6 +1073,7 @@
     <Content Include="Views\Dashboards\Group.cshtml" />
     <Content Include="Views\Dashboards\Notification.cshtml" />
     <Content Include="Views\Dashboards\Test.cshtml" />
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

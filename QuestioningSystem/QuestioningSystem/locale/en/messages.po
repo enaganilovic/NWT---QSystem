@@ -7,10 +7,12 @@ msgid "Log in"
 msgstr ""
 
 #: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr ""
 
 #: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
+#: ..\Views\Group\Create.cshtml:19
 msgid "Username required"
 msgstr ""
 
@@ -59,7 +61,15 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
+#: ..\Views\Group\Create.cshtml:15
+msgid "Group title"
+msgstr ""
+
+#: ..\Views\Group\Create.cshtml:23
+msgid "Maximal number of members"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:54
 msgid "About"
 msgstr ""
 
@@ -71,7 +81,7 @@ msgstr ""
 msgid "Use this area to provide additional information"
 msgstr ""
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:50
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:55
 msgid "Contact"
 msgstr ""
 
@@ -91,43 +101,39 @@ msgstr ""
 msgid "News feed"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:32
+#: ..\Views\Shared\_Layout.cshtml:28
 msgid "Tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:34
+#: ..\Views\Shared\_Layout.cshtml:30
 msgid "New test"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:35
+#: ..\Views\Shared\_Layout.cshtml:31
 msgid "Manage tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:36
+#: ..\Views\Shared\_Layout.cshtml:32
 msgid "My tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:37
+#: ..\Views\Shared\_Layout.cshtml:33
 msgid "Explore tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:42
+#: ..\Views\Shared\_Layout.cshtml:38
 msgid "Groups"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:44
-msgid "Create Group"
-msgstr ""
-
 #: ..\Views\Shared\_Layout.cshtml:45
-msgid "Manage Groups"
+msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:46
-msgid "Delete Group"
+#: ..\Views\Shared\_Layout.cshtml:58
+msgid "Admin Panel"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:67
+#: ..\Views\Shared\_Layout.cshtml:77
 msgid "All rights reserved"
 msgstr ""
 
