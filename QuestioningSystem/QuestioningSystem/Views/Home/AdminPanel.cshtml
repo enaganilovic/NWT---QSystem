@@ -1,0 +1,39 @@
+﻿@model IEnumerable<QuestioningSystem.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "AdminPanel";
+}
+
+<h2>AdminPanel</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table-bordered">
+    <tr>
+        <th style="color:white">
+            @_("Username")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="color:white">
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @if(item.Banned)
+            {
+                @Html.ActionLink("Unban", "UnBan", new { id=item.Id }) 
+            }
+            else
+            {
+                @Html.ActionLink("Ban", "Ban", new { id=item.Id }) 
+            }
+            | @Html.ActionLink("Change role", "ChangeRole", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
