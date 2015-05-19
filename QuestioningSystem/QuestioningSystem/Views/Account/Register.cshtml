@@ -51,11 +51,11 @@
              <tr>
                 <td class="labelStyle">@_("Email"):</td>
                 <td>
-                    <input type="text" ng-model="Email" name="rEmail" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                    <input type="email" ng-model="Email" name="rEmail" ng-class="Submitted?'ng-dirty':''" required autofocus/>
 </td>
 <td>
 <div role="alert">
-      <span class="error" ng-show="f2.rEmail.$error.email">
+      <span class="error" ng-show="f2.rEmail.$invalid && !f2.rEmail.$pristine">
         <div style="color:rgb(255, 0, 0)">Not valid email!</div>
 </span>
     </div>
@@ -65,22 +65,41 @@
              <tr>
                 <td class="labelStyle">@_("First Name"):</td>
                 <td>
-                    <input type="text" ng-model="FirstName" name="rFirstName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                    <input type="text" ng-model="FirstName" name="rFirstName" ng-minlength="3" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+<td>
+                <div role="alert">
+                      <span class="error" ng-show="f2.rFirstName.$error.minlength">
+                        <div style="color:rgb(255, 0, 0)">Min 3 characters!</div>
+                </div>
                 </td>
             </tr>
             
              <tr>
                 <td class="labelStyle">@_("Last Name"):</td>
                 <td>
-                    <input type="text" ng-model="LastName" name="rLastName" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                    <input type="text" ng-model="LastName" name="rLastName" ng-minlength="3" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                </td>
+<td>
+                <div role="alert">
+                      <span class="error" ng-show="f2.rLastName.$error.minlength">
+                        <div style="color:rgb(255, 0, 0)">Min 3 characters!</div>
+                </div>
                 </td>
             </tr>
             
              <tr>
                 <td class="labelStyle">@_("Phone Number"):</td>
                 <td>
-                    <input type="text" ng-model="PhoneNumber" name="rPhoneNumber" autofocus/>
+                    <input type="text" ng-model="PhoneNumber" name="rPhoneNumber" ng-minlength="9" ng-pattern="/^\d{10}$/"  autofocus/>
                 </td>
+                <td>
+                <div role="alert">
+                      <span class="error" ng-show="f2.rPhoneNumber.$error.minlength && f2.rPhoneNumber.$error.pattern">
+                        <div style="color:rgb(255, 0, 0)">The phone number field should be of 9 digits!</div>
+                </span>
+                    </div>
+                 </td> 
             </tr>
             
              <tr>

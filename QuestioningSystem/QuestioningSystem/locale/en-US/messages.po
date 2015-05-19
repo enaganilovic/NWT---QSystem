@@ -47,15 +47,15 @@ msgstr ""
 msgid "First Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:73
+#: ..\Views\Account\Register.cshtml:79
 msgid "Last Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:80
+#: ..\Views\Account\Register.cshtml:92
 msgid "Phone Number"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:87
+#: ..\Views\Account\Register.cshtml:106
 msgid "Age"
 msgstr ""
 
