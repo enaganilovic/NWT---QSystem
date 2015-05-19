@@ -53,7 +53,7 @@
         </li>
                     <li>@Html.ActionLink(@_("About").ToString(), "About", "Home")</li>
                     <li>@Html.ActionLink(@_("Contact").ToString(), "Contact", "Home")</li>
-                    @if(!User.IsInRole("Administrator"))
+                    @if(User.IsInRole("Administrator"))
 {
 <li>@Html.ActionLink(@_("Admin Panel").ToString(), "AdminPanel", "Home")</li>
 }
