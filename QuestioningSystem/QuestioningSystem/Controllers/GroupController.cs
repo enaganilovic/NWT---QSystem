@@ -47,6 +47,19 @@ namespace QuestioningSystem.Controllers
                 return new JsonResult { Data = "Could not save group.", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        [HttpGet]
+        public async Task<ActionResult> GetAllData()
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var groups = (from g in context.Groups
+                              select g).ToList();
+
+                return new JsonResult { Data = groups, JsonRequestBehavior = JsonRequestBehavior.AllowGet }; 
+            }
+
+        }
+
 
 	}
 }
