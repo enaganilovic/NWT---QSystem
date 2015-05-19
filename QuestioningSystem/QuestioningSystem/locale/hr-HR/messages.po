@@ -62,7 +62,7 @@ msgstr "Nova sifra"
 msgid "Confirm New Password"
 msgstr "Potvrda nove sifre"
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:48
 msgid "About"
 msgstr "O nama"
 
@@ -74,7 +74,7 @@ msgstr "Stranica za opis aplikacije"
 msgid "Use this area to provide additional information"
 msgstr "Iskoristite ovaj prostor za dodatne informacije"
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:50
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -90,10 +90,6 @@ msgstr "Podrka"
 #: ..\Views\Home\Index.cshtml:7
 msgid "Welcome to QSystem home page"
 msgstr "Dobrodoli na stranicu QSystem-a"
-
-#: ..\Views\Shared\_Layout.cshtml:21
-msgid "News feed"
-msgstr "Novosti"
 
 #: ..\Views\Shared\_Layout.cshtml:32
 msgid "Tests"
@@ -116,23 +112,19 @@ msgstr "Moji testovi"
 msgid "Explore tests"
 msgstr "Pregled testova"
 
-#: ..\Views\Shared\_Layout.cshtml:42
+#: ..\Views\Shared\_Layout.cshtml:41
 msgid "Groups"
 msgstr "Grupe"
 
 #: ..\Views\Shared\_Layout.cshtml:44
-msgid "Create Group"
-msgstr "Nova Grupa"
-
-#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Manage Groups"
 msgstr "Izmjena Grupa"
 
-#: ..\Views\Shared\_Layout.cshtml:46
+#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Delete Group"
 msgstr "Obrisi grupu"
 
-#: ..\Views\Shared\_Layout.cshtml:67
+#: ..\Views\Shared\_Layout.cshtml:61
 msgid "All rights reserved"
 msgstr "Sva prava zadraana"
 
@@ -143,3 +135,9 @@ msgstr "Odjava"
 #: ..\Views\Shared\_LoginPartial.cshtml:10
 msgid "Hello "
 msgstr "Pozdrav "
+
+#~ msgid "News feed"
+#~ msgstr "Novosti"
+
+#~ msgid "Create Group"
+#~ msgstr "Nova Grupa"

@@ -59,7 +59,7 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:48
 msgid "About"
 msgstr ""
 
@@ -71,7 +71,7 @@ msgstr ""
 msgid "Use this area to provide additional information"
 msgstr ""
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:50
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:49
 msgid "Contact"
 msgstr ""
 
@@ -85,10 +85,6 @@ msgstr ""
 
 #: ..\Views\Home\Index.cshtml:7
 msgid "Welcome to QSystem home page"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:21
-msgid "News feed"
 msgstr ""
 
 #: ..\Views\Shared\_Layout.cshtml:32
@@ -111,23 +107,19 @@ msgstr ""
 msgid "Explore tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:42
+#: ..\Views\Shared\_Layout.cshtml:41
 msgid "Groups"
 msgstr ""
 
 #: ..\Views\Shared\_Layout.cshtml:44
-msgid "Create Group"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Manage Groups"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:46
+#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Delete Group"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:67
+#: ..\Views\Shared\_Layout.cshtml:61
 msgid "All rights reserved"
 msgstr ""
 
