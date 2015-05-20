@@ -7,6 +7,7 @@ msgid "Log in"
 msgstr "Prijava"
 
 #: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr "Korisnicko ime"
 
