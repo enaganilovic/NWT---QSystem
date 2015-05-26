@@ -53,17 +53,31 @@ namespace QuestioningSystem.Controllers
                     group.CreationDate = DateTime.Now;
                     if (!string.IsNullOrWhiteSpace(model.GroupMember))
                     {
-                        var user = context.Users.Where(x => x.UserName == model.GroupMember).FirstOrDefault();
-                        if (user != null)
+                        if (model.GroupMember.Contains(';'))
                         {
-                            users.Add(user);
-                            group.Members = users;
+                            string[] nameLines = model.GroupMember.Split(';');
+                            foreach (var item in nameLines)
+                            {
+                                var user = context.Users.Where(x => x.UserName == item).FirstOrDefault();
+                                if (user != null)
+                                {
+                                    users.Add(user);
+                                }
+                            }
                         }
+                        else
+                        {
+                            var user = context.Users.Where(x => x.UserName == model.GroupMember).FirstOrDefault();
+                            if (user != null)
+                            {
+                                users.Add(user);
+                            }
+                        }
+                        group.Members = users;
                     }
                     context.Groups.Add(group);
                     context.SaveChanges();
                 }
-             
                 return new JsonResult { Data = group, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
