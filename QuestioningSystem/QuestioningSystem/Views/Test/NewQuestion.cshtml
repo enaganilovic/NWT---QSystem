@@ -1,0 +1,33 @@
+﻿
+<br />
+
+
+<table class="table">
+    <tr>
+        <th>Question @Model</th>
+        <td><input type="text" name="Question" /></td>
+        <th>Points:</th>
+        <td><input type="text" name="Point" /></td>
+    </tr>
+
+    <tr>
+        <th> Answers </th>
+        <td>
+            <input type="radio" name="@String.Format("correct{0}", @Model)" value="1" />
+            <input type="text" name="Answer1" />
+        </td>
+        <td>
+            <input type="radio" name="@String.Format("correct{0}", @Model)" value="2" />
+            <input type="text" name="Answer2" />
+        </td>
+        <td>
+            <input type="radio" name="@String.Format("correct{0}", @Model)" value="3" />
+            <input type="text" name="Answer3" />
+        </td>
+        <td>
+            <input type="radio" name="@String.Format("correct{0}", @Model)" value="4" />
+            <input type="text" name="Answer4" />
+        </td>
+    </tr>
+</table>
+

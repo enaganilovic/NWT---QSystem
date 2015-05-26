@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace QuestioningSystem.Controllers
+namespace QuestioningSystem.ApiControllers
 {
     public class TestController : ApiController
     {
@@ -102,5 +102,7 @@ namespace QuestioningSystem.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+
     }
 }

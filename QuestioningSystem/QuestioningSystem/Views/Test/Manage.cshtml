@@ -1,0 +1,74 @@
+﻿@model QuestioningSystem.Models.TestViewModel
+
+<script src="~/Scripts/jquery-2.1.1.js" type="text/javascript"></script>
+<script>
+    $(function () {
+
+        $("#Edit").click(function () {
+            var id = $("#ID").val();
+            $('input[name="passId"]').val(id);
+
+        });
+
+        $("#Delete").click(function () {
+            var id = $("#ID").val();
+            $('input[name="passId"]').val(id);
+
+            $.ajax({
+                type: "POST",
+                url: "/Test/Delete",
+                data: { passId: id },
+                success: function (result) {
+                    alert("Successfuly Deleted!");
+                }
+            });
+        });
+        var count = 1;
+        $("#AssignTo").click(function (e) {
+
+            $.ajax({
+                type: "POST",
+                url: "/Group/AssignToTest",
+                data: { passId: $("#ID").val() },
+                success: function (result) {
+                    if (result != null && count == 1)
+                        $('#dropdownGroup').append(result);
+                    count++;
+                }
+            });
+        });
+    });
+</script>
+
+<br />
+<div>
+    <table>
+        <tr>
+            <td><h3>Tests:</h3> @Html.DropDownListFor(x => x.ID, (IEnumerable<SelectListItem>)ViewBag.TestNames, "Select Test")</td>
+            <td id="dropdownGroup"></td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <table>
+
+        <tr>
+            @using (Html.BeginForm("Edit", "Test", FormMethod.Post))
+            {
+                <td> <input type="hidden" name="passId" value="" /></td>
+                <td> <input type="submit" value="Edit" name="Edit" id="Edit" /> </td>
+            }
+
+            @*  @using (Html.BeginForm("AsignTest", "Test", FormMethod.Post))
+                {
+                    <td> <input type="hidden" name="passId" value="" /></td>*@
+            <td> <input type="button" value="Assign to" name="AssignTo" id="AssignTo" /> </td>
+            @* }*@
+
+
+            <td> <input type="button" value="Delete" name="Delete" id="Delete" /> </td>
+
+        </tr>
+    </table>
+
+</div>

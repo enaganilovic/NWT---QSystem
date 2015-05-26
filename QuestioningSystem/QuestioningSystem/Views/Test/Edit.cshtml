@@ -1,0 +1,125 @@
+﻿@model QuestioningSystem.ViewModels.TestModel
+@{
+    ViewBag.Title = "Edit";
+}
+<br />
+<br />
+<script>
+    $(function () {
+        var success = $("#pomId").val();
+        $("#AddNew").click(function (e) {
+            $.ajax({
+                type: "POST",
+                url: "/Test/NewQuestion",
+                data: { id: success-1 },
+                success: function (result) {
+                    $('#showQuestions').append(result);
+                    success++;
+                }
+            });
+        });
+
+        $("#editTest").click(function () {
+            $("#oldName").val('@Model.ID');
+            var questionAnswerPairs = [];
+
+            $('table > tbody > tr').each(function () {
+                var question = $(this).find("td [name='Question']").val();
+                var questionAnswerPair = {
+                    Question: question,
+                    Answers: []
+                };
+
+                $(this).find('input:radio').each(function () {
+                    var answer = $(this);
+                    var answerText = answer.closest('td').find('input:text').val();
+                    var isChecked = answer.is(':checked');
+                    questionAnswerPair.Answers.push({
+                        Text: answerText,
+                        IsChecked: isChecked
+                    });
+                });
+
+                questionAnswerPairs.push(questionAnswerPair);
+            });
+
+            var request = {
+                TestName: $("[name='TestName']").val(),
+                ID: $("[name='oldName']").val(),
+                DurationTime: $("[name='DurationTime']").val(),
+                QuestionAnswerPairs: questionAnswerPairs
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/Test/SaveTest",
+                data: JSON.stringify(request),
+                contentType: 'application/json; charset=UTF-8',
+                success: function (result) {
+                }
+            });
+        });
+
+    });
+</script>
+
+@{
+    <div> <strong> Test name: </strong> </div>
+    <input type="text" name="TestName" value='@Model.TestName' />
+    <div> <strong> Duration: </strong> </div>
+    <input type="number" name="DurationTime" value="@Model.DurationTime" />
+    <br />
+}
+
+<br />
+<br />
+<table class="table" id="tabela">
+
+    @{
+        int qCount = 0;
+        int pom = 1;
+        foreach (var question in @Model.QuestionAnswerPairs)
+        {
+
+            <tr>
+                <th> Question @pom</th>
+                <td><input type="text" name="Question" value="@question.Question" /></td>
+            </tr>
+            <tr>
+
+                @foreach (var answer in @question.Answers)
+                {
+                    qCount = 0;
+                    <td>
+                        Answers:
+                        @if (answer.IsChecked)
+                        {
+                            <input type="radio" value="@qCount.ToString() + @pom.ToString()" name="@pom" checked />
+                        }
+                        else
+                        {
+                            <input type="radio" value="@qCount.ToString() + @pom.ToString()" name="@pom" />
+                        }
+                        <input type="text" name="Answer+@pom" value="@answer.Text" />
+
+                    </td>
+                        qCount++;
+                }
+            </tr>
+            pom++;
+            @*<td> <input type="button" value="Delete question" id="DeleteQuestion" /></td>*@
+        }
+        <input type="hidden" id="pomId" name="pomId" value="@pom"></input>
+    }
+
+</table>
+
+<div id="showQuestions"></div>
+<input type="button" name="AddNew" id="AddNew" value="Add new question" />
+<br />
+<br />
+<input type="hidden" id="oldName" name="oldName"></input>
+
+
+<input type="submit" value="Edit test" id="editTest" />
+<input type="button" value="Cancel" />
