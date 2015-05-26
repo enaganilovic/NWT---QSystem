@@ -200,7 +200,7 @@
     <Compile Include="ApiControllers\CourseController.cs" />
     <Compile Include="ApiControllers\FinishedTestController.cs" />
     <Compile Include="ApiControllers\GroupController.cs" />
-    <Compile Include="Controllers\Alerts.cs" />
+    <Compile Include="Controllers\DashboardsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -240,6 +240,7 @@
     <Content Include="App_Readme\Spring.Social.Core.txt" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\justified-nav.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1068,9 +1069,17 @@
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Group\Create.cshtml" />
+    <Content Include="Views\Group\Manage.cshtml" />
+    <Content Include="Views\Dashboards\User.cshtml" />
+    <Content Include="Views\Shared\Group.cshtml" />
+    <Content Include="Views\Dashboards\Group.cshtml" />
+    <Content Include="Views\Dashboards\Notification.cshtml" />
+    <Content Include="Views\Dashboards\Test.cshtml" />
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
+    <Folder Include="Views\Dashoboards\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -1082,6 +1091,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503211837277_InitialCreate.resx">
       <DependentUpon>201503211837277_InitialCreate.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

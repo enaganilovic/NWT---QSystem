@@ -4196,6 +4196,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  color:rgb(193, 196, 197);
 }
 
 .navbar-brand:hover,
@@ -4246,6 +4247,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 20px;
+  color:rgb(193, 196, 197);
 }
 
 @media (max-width: 767px) {
@@ -4282,6 +4284,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   .navbar-nav > li > a {
     padding-top: 15px;
     padding-bottom: 15px;
+    color:rgb(193, 196, 197);
   }
 }
 

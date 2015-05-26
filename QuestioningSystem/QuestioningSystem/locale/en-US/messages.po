@@ -18,14 +18,16 @@ msgid "Log in"
 msgstr ""
 
 #: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr ""
 
 #: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
+#: ..\Views\Group\Create.cshtml:19
 msgid "Username required"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:23 ..\Views\Account\Register.cshtml:28
+#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:39
 msgid "Password"
 msgstr ""
 
@@ -34,27 +36,27 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:34
+#: ..\Views\Account\Register.cshtml:45
 msgid "Confirm Password"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:41
+#: ..\Views\Account\Register.cshtml:52
 msgid "Email"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:48
+#: ..\Views\Account\Register.cshtml:66
 msgid "First Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:55
+#: ..\Views\Account\Register.cshtml:79
 msgid "Last Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:62
+#: ..\Views\Account\Register.cshtml:92
 msgid "Phone Number"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:69
+#: ..\Views\Account\Register.cshtml:106
 msgid "Age"
 msgstr ""
 
@@ -70,7 +72,15 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:47
+#: ..\Views\Group\Create.cshtml:15
+msgid "Group title"
+msgstr ""
+
+#: ..\Views\Group\Create.cshtml:23
+msgid "Maximal number of members"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:57
 msgid "About"
 msgstr ""
 
@@ -82,7 +92,7 @@ msgstr ""
 msgid "Use this area to provide additional information"
 msgstr ""
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:48
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:58
 msgid "Contact"
 msgstr ""
 
@@ -98,43 +108,35 @@ msgstr ""
 msgid "Welcome to QSystem home page"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:21
-msgid "News feed"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:30
+#: ..\Views\Shared\_Layout.cshtml:32
 msgid "Tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:32
+#: ..\Views\Shared\_Layout.cshtml:34
 msgid "New test"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:33
+#: ..\Views\Shared\_Layout.cshtml:35
 msgid "Manage tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:34
+#: ..\Views\Shared\_Layout.cshtml:36
 msgid "My tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:35
+#: ..\Views\Shared\_Layout.cshtml:37
 msgid "Explore tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:40
+#: ..\Views\Shared\_Layout.cshtml:41
 msgid "Groups"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:43
-msgid "Manage Groups"
+#: ..\Views\Shared\_Layout.cshtml:48
+msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:44
-msgid "Delete Group"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:65
+#: ..\Views\Shared\_Layout.cshtml:70
 msgid "All rights reserved"
 msgstr ""
 

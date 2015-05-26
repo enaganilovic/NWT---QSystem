@@ -7,14 +7,16 @@ msgid "Log in"
 msgstr "Prijava"
 
 #: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr "Korisnicko ime"
 
 #: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
+#: ..\Views\Group\Create.cshtml:19
 msgid "Username required"
 msgstr "Korisnicko ime obavezno"
 
-#: ..\Views\Account\Login.cshtml:23 ..\Views\Account\Register.cshtml:28
+#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:39
 msgid "Password"
 msgstr "Sifra"
 
@@ -23,27 +25,27 @@ msgstr "Sifra"
 msgid "Register"
 msgstr "Registracija"
 
-#: ..\Views\Account\Register.cshtml:34
+#: ..\Views\Account\Register.cshtml:45
 msgid "Confirm Password"
 msgstr "Potvrda sifre"
 
-#: ..\Views\Account\Register.cshtml:41
+#: ..\Views\Account\Register.cshtml:52
 msgid "Email"
 msgstr "Email"
 
-#: ..\Views\Account\Register.cshtml:48
+#: ..\Views\Account\Register.cshtml:66
 msgid "First Name"
 msgstr "Ime"
 
-#: ..\Views\Account\Register.cshtml:55
+#: ..\Views\Account\Register.cshtml:79
 msgid "Last Name"
 msgstr "Prezime"
 
-#: ..\Views\Account\Register.cshtml:62
+#: ..\Views\Account\Register.cshtml:92
 msgid "Phone Number"
 msgstr "Broj telefona"
 
-#: ..\Views\Account\Register.cshtml:69
+#: ..\Views\Account\Register.cshtml:106
 msgid "Age"
 msgstr "Broj godina"
 
@@ -62,7 +64,15 @@ msgstr "Nova sifra"
 msgid "Confirm New Password"
 msgstr "Potvrda nove sifre"
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:47
+#: ..\Views\Group\Create.cshtml:15
+msgid "Group title"
+msgstr ""
+
+#: ..\Views\Group\Create.cshtml:23
+msgid "Maximal number of members"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:57
 msgid "About"
 msgstr "O nama"
 
@@ -74,7 +84,7 @@ msgstr "Stranica za opis aplikacije"
 msgid "Use this area to provide additional information"
 msgstr "Iskoristite ovaj prostor za dodatne informacije"
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:48
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:58
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -91,44 +101,36 @@ msgstr "Podrka"
 msgid "Welcome to QSystem home page"
 msgstr "Dobrodoli na stranicu QSystem-a"
 
-#: ..\Views\Shared\_Layout.cshtml:21
-msgid "News feed"
-msgstr "Novosti"
-
-#: ..\Views\Shared\_Layout.cshtml:30
+#: ..\Views\Shared\_Layout.cshtml:32
 msgid "Tests"
 msgstr "Testovi"
 
-#: ..\Views\Shared\_Layout.cshtml:32
+#: ..\Views\Shared\_Layout.cshtml:34
 msgid "New test"
 msgstr "Novi test"
 
-#: ..\Views\Shared\_Layout.cshtml:33
+#: ..\Views\Shared\_Layout.cshtml:35
 msgid "Manage tests"
 msgstr "Izmjena testova"
 
-#: ..\Views\Shared\_Layout.cshtml:34
+#: ..\Views\Shared\_Layout.cshtml:36
 #, fuzzy
 msgid "My tests"
 msgstr "Moji testovi"
 
-#: ..\Views\Shared\_Layout.cshtml:35
+#: ..\Views\Shared\_Layout.cshtml:37
 msgid "Explore tests"
 msgstr "Pregled testova"
 
-#: ..\Views\Shared\_Layout.cshtml:40
+#: ..\Views\Shared\_Layout.cshtml:41
 msgid "Groups"
 msgstr "Grupe"
 
-#: ..\Views\Shared\_Layout.cshtml:43
-msgid "Manage Groups"
-msgstr "Izmjena Grupa"
+#: ..\Views\Shared\_Layout.cshtml:48
+msgid "Dashboards"
+msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:44
-msgid "Delete Group"
-msgstr "Obrisi grupu"
-
-#: ..\Views\Shared\_Layout.cshtml:65
+#: ..\Views\Shared\_Layout.cshtml:70
 msgid "All rights reserved"
 msgstr "Sva prava zadraana"
 
@@ -139,6 +141,15 @@ msgstr "Odjava"
 #: ..\Views\Shared\_LoginPartial.cshtml:10
 msgid "Hello "
 msgstr "Pozdrav "
+
+#~ msgid "Manage Groups"
+#~ msgstr "Izmjena Grupa"
+
+#~ msgid "Delete Group"
+#~ msgstr "Obrisi grupu"
+
+#~ msgid "News feed"
+#~ msgstr "Novosti"
 
 #~ msgid "Create Group"
 #~ msgstr "Nova Grupa"

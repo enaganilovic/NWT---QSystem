@@ -9,5 +9,6 @@ namespace QuestioningSystem.Models
     {
         public string Title { get; set; }
         public int MaxNumberOfMembers { get; set; }
+        public string GroupMember { get; set; }
     }
 }
