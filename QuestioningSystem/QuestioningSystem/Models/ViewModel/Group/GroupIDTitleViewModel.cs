@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication2.Models.ViewModel.Group
+namespace QuestioningSystem.Models.ViewModel.Group
 {
     public class GroupIDTitleViewModel
     {

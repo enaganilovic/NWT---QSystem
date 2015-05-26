@@ -1,0 +1,82 @@
+﻿@model QuestioningSystem.Models.ViewModel.Group.GroupsForExploreTestList
+
+@{
+    ViewBag.Title = "ExploreTests";
+}
+
+<h2>ExploreTests</h2>
+<table class="table">
+    <tr>
+        <th> Title </th>
+        <th> Creator </th>
+        <th> Date </th>
+        <th> Duration </th>
+        <th> Groups </th>
+    </tr>
+    @{
+        int pom = 1;
+        foreach (var item in @Model.lista)
+        {
+            <tr>
+                @if (@item.Groups.Count > 1)
+                {
+                    <td rowspan="@item.Groups.Count"> @item.TestName </td>
+                    <td rowspan="@item.Groups.Count"> @item.Creator </td>
+                    <td rowspan="@item.Groups.Count"> @item.DateTime </td>
+                    <td rowspan="@item.Groups.Count"> @item.Duration </td>
+                }
+                else
+                {
+                    <td> @item.TestName </td>
+                    <td> @item.Creator </td>
+                    <td> @item.DateTime </td>
+                    <td> @item.Duration </td>
+                }
+
+                @if (item.Groups.Count != 0)
+                {
+                    int pomocna = 0;
+                    foreach (var group in @item.Groups)
+                    {
+                        if (pomocna == 0)
+                        {
+                            <td>@group.GroupTitle  </td>
+                            <form action="@Url.Action("SaveNotification", "Notification")" method="post">
+                                <input type="hidden" id="GroupId" name="GroupId" value="@group.GroupId" />
+                                <input type="hidden" id="CreatorName" name="CreatorName" value="@item.Creator" />
+                                <input type="hidden" id="Type" name="Type" value="1" />
+                                <td> <input type="submit" id="@pom" name="@group.GroupId" value="Join group" /> </td>
+                            </form>
+
+                        }
+                        else
+                        {
+                        <tr>
+                            <td>@group.GroupTitle  </td>
+                            <form action="@Url.Action("SaveNotification", "Notification")" method="post">
+                                <input type="hidden" id="GroupId" name="GroupId" value="@group.GroupId" />
+                                <input type="hidden" id="CreatorName" name="CreatorName" value="@item.Creator" />
+                                <input type="hidden" id="Type" name="Type" value="1" />
+                                <td> <input type="submit" id="@pom" name="@group.GroupId" value="Join group" /> </td>
+                            </form>
+                        </tr>
+
+                        }
+                        pomocna++;
+                    }
+                }
+                else
+                {
+                    <td> No group </td>
+                    <form action="@Url.Action("SaveNotification", "Notification")" method="post">
+                        <input type="hidden" id="TestId" name="TestId" value="@item.TestId" />
+                        <input type="hidden" id="CreatorName" name="CreatorName" value="@item.Creator" />
+                        <input type="hidden" id="Type" name="Type" value="2" />
+                        <td> <input type="submit" id="@pom" name="@item.TestId" value="Send request to test creator" />  </td>
+                    </form>
+                }
+                </tr>
+                pom++;
+        }
+    }
+</table>

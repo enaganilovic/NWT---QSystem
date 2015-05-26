@@ -1,11 +1,11 @@
-﻿using System;
+﻿using QuestioningSystem.Models.ViewModel.Group;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication2.Models.ViewModel.Group;
-using WebApplication2.Models.ViewModel.Test;
 
-namespace WebApplication2.Models.ViewModel
+
+namespace QuestioningSystem.Models
 {
     public class TestGroupModel
     {
