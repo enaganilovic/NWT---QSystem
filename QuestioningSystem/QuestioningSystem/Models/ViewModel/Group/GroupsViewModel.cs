@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.WebPages.Html;
 
-namespace WebApplication2.Models.ViewModel.Group
+namespace QuestioningSystem.Models.ViewModel.Group
 {
     public class GroupsViewModel
     {

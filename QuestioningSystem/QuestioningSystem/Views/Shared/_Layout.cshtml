@@ -8,6 +8,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <script src="~/Scripts/jquery-2.1.4.intellisense.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.js"></script>
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+
 <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
 </head>
 <body ng-app="MyApp">
@@ -31,10 +35,10 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@_("Tests") <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">@_("New test")</a></li>
-            <li><a href="#">@_("Manage tests")</a></li>
+              <li role="presentation">@Html.ActionLink("Create test", "Create", "Test")</li>
+              <li role="presentation">@Html.ActionLink("Manage test", "Manage", "Test")</li>
             <li><a href="#">@_("My tests")</a></li>
-             <li><a href="#">@_("Explore tests")</a></li>
+              <li role="presentation">@Html.ActionLink("Explore tests", "ExploreTests", "Test")</li>
           </ul>
         </li>
           <li class="dropdown">
@@ -78,6 +82,8 @@
         <script src="~/Scripts/AngularControllers/GroupController.js"></script>
 
     @RenderSection("scripts", required: false)
+
+
 </body>
 
 </html>

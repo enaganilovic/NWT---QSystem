@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication2.Models.ViewModel.Group
+namespace QuestioningSystem.Models.ViewModel.Group
 {
     public class GroupViewModel
     {
@@ -11,6 +11,9 @@ namespace WebApplication2.Models.ViewModel.Group
         public string Creator { get; set; }
         public int ID { get; set; }
         public List<ApplicationUser> Members { get; set; }
-        
+
+        public string GroupMember { get; set; }
+
+        public int MaxNumberOfMembers { get; set; }
     }
 }
