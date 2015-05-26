@@ -22,25 +22,48 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
-        //[Authorize]
+        [HttpPost]
+        public async Task<ActionResult> CheckUser(string userName)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var users = context.Users.Where(x => x.UserName == userName).ToList();
+                if (users.Count != 0)
+                    return new JsonResult { Data = true, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+            return new JsonResult { Data = false, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> SaveGroup(GroupViewModel model)
         {
             var group = new Group();
-            if (model != null)
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            if (model != null && model.Title != null && model.MaxNumberOfMembers > 0)
             {
                 using (var context = ApplicationDbContext.Create())
                 {
-                    if (!string.IsNullOrWhiteSpace(User.Identity.Name))
-                    group.Creator.UserName = User.Identity.Name;
+                    if (!string.IsNullOrWhiteSpace(User.Identity.Name)) {
+                         var user = context.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                         group.Creator = user;
+                    }
                     group.MaxNumberOfMembers = model.MaxNumberOfMembers;
                     group.Title = model.Title;
                     group.CreationDate = DateTime.Now;
+                    if (!string.IsNullOrWhiteSpace(model.GroupMember))
+                    {
+                        var user = context.Users.Where(x => x.UserName == model.GroupMember).FirstOrDefault();
+                        if (user != null)
+                        {
+                            users.Add(user);
+                            group.Members = users;
+                        }
+                    }
                     context.Groups.Add(group);
                     context.SaveChanges();
                 }
              
-              
                 return new JsonResult { Data = group, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             }
             else
