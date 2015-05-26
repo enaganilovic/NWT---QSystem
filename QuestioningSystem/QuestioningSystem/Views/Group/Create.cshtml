@@ -25,41 +25,23 @@
                     <input type="number" ng-model="maxNumberOfMembers" name="rAge" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
             </tr>
-            <tr><td>&nbsp;</td></tr>
             <tr>
+                
+                <td class="labelStyle">@_("Add user to this group (Optional)"):</td> 
                 <td>
-
+                    <input type="text" ng-model="addUser" name="gUser" autofocus/>
                 </td>
+                 <td>&nbsp;</td>
+                <td>  <input type="button" value="Check User" ng-click="CheckUser()" name="gAddUser" autofocus/></td>
             </tr>
+              <tr><td>&nbsp;</td></tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="@_("Create Group").ToString()" />
+                    <input type="submit" value="@_("Create Group").ToString()" />&nbsp;
+                    <input type="button" ng-click="Clear()" Value="@_("Clear").ToString()" />
                 </td>
             </tr>
-        </table>
-        <table id="submittedGroups">
-            <thead>
-            <tr>
-                <th>
-                    Title of Group                
-                </th>
-                <th>
-                    Max Number of members
-                </th>
-                <th>
-                    Creation Date
-                </th>
-                </thead>
-            <tbody>
-                 <div ng-repeat = "pers in awesomeData">
-                <tr>
-                    <td>{{pers.Title}}</td>
-                    <td>{{pers.MaxNumberOfMembers}}</td>
-                    <td>{{pers.CreationDate}}</td>
-                </tr>
-            </div>
-            </tbody>
         </table>
 
         </form>

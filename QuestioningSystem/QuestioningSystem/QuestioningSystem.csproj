@@ -202,6 +202,7 @@
     <Compile Include="ApiControllers\CourseController.cs" />
     <Compile Include="ApiControllers\FinishedTestController.cs" />
     <Compile Include="ApiControllers\GroupController.cs" />
+    <Compile Include="Controllers\DashboardsController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LanguageController.cs" />
@@ -1092,9 +1093,11 @@
     <Content Include="Views\Test\Edit.cshtml" />
     <Content Include="Views\Group\AssignToTest.cshtml" />
     <Content Include="Views\Test\ExploreTests.cshtml" />
+    <Content Include="Views\Home\AdminPanel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
+    <Folder Include="Views\Dashoboards\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

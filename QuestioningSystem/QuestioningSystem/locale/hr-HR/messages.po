@@ -7,6 +7,7 @@ msgid "Log in"
 msgstr "Prijava"
 
 #: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr "Korisnicko ime"
 
@@ -36,15 +37,15 @@ msgstr "Email"
 msgid "First Name"
 msgstr "Ime"
 
-#: ..\Views\Account\Register.cshtml:73
+#: ..\Views\Account\Register.cshtml:79
 msgid "Last Name"
 msgstr "Prezime"
 
-#: ..\Views\Account\Register.cshtml:80
+#: ..\Views\Account\Register.cshtml:92
 msgid "Phone Number"
 msgstr "Broj telefona"
 
-#: ..\Views\Account\Register.cshtml:87
+#: ..\Views\Account\Register.cshtml:106
 msgid "Age"
 msgstr "Broj godina"
 

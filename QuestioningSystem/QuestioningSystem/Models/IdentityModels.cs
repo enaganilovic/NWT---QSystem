@@ -14,6 +14,7 @@ namespace QuestioningSystem.Models
         public string PhoneNumber { get; set; }
         public int Age { get; set; }
         public byte[] ProfilePicture { get; set; }
+        public bool Banned { get; set; }
 
         public ICollection<Group> Groups { get; set; }
         public ApplicationUser()
