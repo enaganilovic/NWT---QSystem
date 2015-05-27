@@ -36,27 +36,27 @@ msgstr ""
 msgid "Register"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:45
+#: ..\Views\Account\Register.cshtml:52
 msgid "Confirm Password"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:52
+#: ..\Views\Account\Register.cshtml:60
 msgid "Email"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:66
+#: ..\Views\Account\Register.cshtml:74
 msgid "First Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:79
+#: ..\Views\Account\Register.cshtml:87
 msgid "Last Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:92
+#: ..\Views\Account\Register.cshtml:100
 msgid "Phone Number"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:106
+#: ..\Views\Account\Register.cshtml:114
 msgid "Age"
 msgstr ""
 
