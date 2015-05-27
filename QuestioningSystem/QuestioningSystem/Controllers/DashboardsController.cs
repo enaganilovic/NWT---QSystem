@@ -44,5 +44,11 @@ namespace QuestioningSystem.Controllers
                    }
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> GetTestChart()
+        {
+            return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
 	}
 }
