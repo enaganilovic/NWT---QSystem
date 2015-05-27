@@ -24,6 +24,11 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
+        public ActionResult GroupCreator()
+        {
+            return View();
+        }
+
         [Authorize]
         [HttpPost]
         public async Task<ActionResult> GetGroupChart()
@@ -42,6 +47,27 @@ namespace QuestioningSystem.Controllers
                 if (result != null)
                     return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                    }
+            return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+       
+        [HttpPost]
+        public async Task<ActionResult> GetGroupCreatorChart()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+                List<string> usernames = new List<string>();
+                List<int> numberOfGroups = new List<int>();
+                var users = context.Users.Where(x => 1==1).ToList();
+                foreach(var user in users)
+                {
+                    usernames.Add(user.UserName);
+                    var groups = context.Groups.Where(x => x.Creator.UserName == user.UserName).ToList();
+                    numberOfGroups.Add(groups.Count);
+                }
+
+                var result = new { Usernames = usernames, Numbers = numberOfGroups };
+                if (result != null)
+                    return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 	}
