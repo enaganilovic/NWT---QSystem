@@ -68,11 +68,15 @@ msgstr "Potvrda nove sifre"
 msgid "Group title"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:23
+#: ..\Views\Group\Create.cshtml:33
 msgid "Maximal number of members"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:57
+#: ..\Views\Group\Create.cshtml:40
+msgid "Add user to this group (Optional)"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:61
 msgid "About"
 msgstr "O nama"
 
@@ -84,7 +88,7 @@ msgstr "Stranica za opis aplikacije"
 msgid "Use this area to provide additional information"
 msgstr "Iskoristite ovaj prostor za dodatne informacije"
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:58
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -101,36 +105,24 @@ msgstr "Podrka"
 msgid "Welcome to QSystem home page"
 msgstr "Dobrodoli na stranicu QSystem-a"
 
-#: ..\Views\Shared\_Layout.cshtml:32
+#: ..\Views\Shared\_Layout.cshtml:36
 msgid "Tests"
 msgstr "Testovi"
 
-#: ..\Views\Shared\_Layout.cshtml:34
-msgid "New test"
-msgstr "Novi test"
-
-#: ..\Views\Shared\_Layout.cshtml:35
-msgid "Manage tests"
-msgstr "Izmjena testova"
-
-#: ..\Views\Shared\_Layout.cshtml:36
+#: ..\Views\Shared\_Layout.cshtml:40
 #, fuzzy
 msgid "My tests"
 msgstr "Moji testovi"
 
-#: ..\Views\Shared\_Layout.cshtml:37
-msgid "Explore tests"
-msgstr "Pregled testova"
-
-#: ..\Views\Shared\_Layout.cshtml:41
+#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Groups"
 msgstr "Grupe"
 
-#: ..\Views\Shared\_Layout.cshtml:48
+#: ..\Views\Shared\_Layout.cshtml:52
 msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:70
+#: ..\Views\Shared\_Layout.cshtml:74
 msgid "All rights reserved"
 msgstr "Sva prava zadraana"
 
@@ -141,6 +133,15 @@ msgstr "Odjava"
 #: ..\Views\Shared\_LoginPartial.cshtml:10
 msgid "Hello "
 msgstr "Pozdrav "
+
+#~ msgid "New test"
+#~ msgstr "Novi test"
+
+#~ msgid "Manage tests"
+#~ msgstr "Izmjena testova"
+
+#~ msgid "Explore tests"
+#~ msgstr "Pregled testova"
 
 #~ msgid "Manage Groups"
 #~ msgstr "Izmjena Grupa"

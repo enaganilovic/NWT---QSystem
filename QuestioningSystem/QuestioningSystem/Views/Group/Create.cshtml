@@ -15,8 +15,18 @@
                 @_("Group title"):
                 </td>
                 <td>
-                    <input type="text" ng-model="titleOfGroup" name="gTitle" ng-class="Submitted?'ng-dirty':''" required autofocus/>
+                    <input type="text" ng-model="titleOfGroup" name="gTitle" ng-minlength="3" ng-maxlength="10" ng-class="Submitted?'ng-dirty':''" required autofocus/>
 @*                    <span class="error" ng-show="f1.cUsername.$dirty || Submitted">@_("Username required")</span>*@
+                </td>
+<td>
+<div role="alert">
+      <span class="error" ng-show="f3.gTitle.$error.minlength">
+        <div style="color:rgb(255, 0, 0)">Too short(min 3 characters)!</div>
+</span>
+      <span class="error" ng-show="f3.gTitle.$error.maxlength">
+        <div style="color:rgb(255, 0, 0)">Too long(max 10 characters)!</div>
+</span>
+    </div>
                 </td>
             </tr>
              <tr>
