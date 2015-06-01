@@ -25,27 +25,27 @@ msgstr "Sifra"
 msgid "Register"
 msgstr "Registracija"
 
-#: ..\Views\Account\Register.cshtml:45
+#: ..\Views\Account\Register.cshtml:52
 msgid "Confirm Password"
 msgstr "Potvrda sifre"
 
-#: ..\Views\Account\Register.cshtml:52
+#: ..\Views\Account\Register.cshtml:60
 msgid "Email"
 msgstr "Email"
 
-#: ..\Views\Account\Register.cshtml:66
+#: ..\Views\Account\Register.cshtml:74
 msgid "First Name"
 msgstr "Ime"
 
-#: ..\Views\Account\Register.cshtml:79
+#: ..\Views\Account\Register.cshtml:87
 msgid "Last Name"
 msgstr "Prezime"
 
-#: ..\Views\Account\Register.cshtml:92
+#: ..\Views\Account\Register.cshtml:100
 msgid "Phone Number"
 msgstr "Broj telefona"
 
-#: ..\Views\Account\Register.cshtml:106
+#: ..\Views\Account\Register.cshtml:114
 msgid "Age"
 msgstr "Broj godina"
 

@@ -29,6 +29,11 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
+        public ActionResult Test()
+        {
+            return View();
+        }
+
         [Authorize]
         [HttpPost]
         public async Task<ActionResult> GetGroupChart()
@@ -49,6 +54,8 @@ namespace QuestioningSystem.Controllers
                    }
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
+
+
        
         [HttpPost]
         public async Task<ActionResult> GetGroupCreatorChart()
@@ -70,11 +77,25 @@ namespace QuestioningSystem.Controllers
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
-        [Authorize]
+      [Authorize]
         [HttpPost]
         public async Task<ActionResult> GetTestChart()
         {
-            return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            ApplicationDbContext context = new ApplicationDbContext();
+                List<string> usernames = new List<string>();
+                List<int> numberOfTests = new List<int>();
+                var users = context.Users.Where(x => 1==1).ToList();
+                foreach(var user in users)
+                {
+                    usernames.Add(user.UserName);
+                    var tests = context.Tests.Where(x => x.Creator.UserName == user.UserName).ToList();
+                    numberOfTests.Add(tests.Count);
+                }
+
+                var result = new { Usernames = usernames, Numbers = numberOfTests };
+                if (result != null)
+          return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
 	}

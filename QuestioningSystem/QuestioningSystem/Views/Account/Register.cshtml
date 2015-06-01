@@ -42,14 +42,22 @@
             <tr>
                 <td class="labelStyle">@_("Password"):</td>
                 <td>
-                    <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
-                </td>
+                    <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''"  ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required autofocus/>
+                </td>  
+<td>
+<div role="alert">
+      <span class="error" ng-show="f2.cPassword.$error.pattern && f2.cPassword.$dirty">
+        <div style="color:rgb(255, 0, 0)">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</div>
+</span>
+    </div>
+                </td>                                                                                                             
             </tr>
             <tr>
                 <td class="labelStyle">@_("Confirm Password"):</td>
                 <td>
                     <input type="password" ng-model="ConfirmedPassword" name="rCPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
+
             </tr>
             
              <tr>
