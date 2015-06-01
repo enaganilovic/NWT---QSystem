@@ -10,6 +10,9 @@
     $scope.Age = 0;
     $scope.Submitted = false;
     $scope.Message = '';
+    $scope.Success = false;
+    $scope.showSuccessAlert = false;
+    $scope.showFailureAlert = false;
     $scope.$watch('f2.$valid', function(newVal) {
         $scope.IsFormValid = newVal;
     });
@@ -25,14 +28,18 @@
             Age: $scope.Age
         };
         $scope.Submitted = true;
-        RegistrationService.GetUser(RegistrationData).then(function (d) {
-            if (d.data) {
-                $window.location = '/Account/Confirm';
-                $scope.Message = "Successfully logged in. Welcome";
-            }
-            else 
-                $scope.Message = "Please fill in all required fields to complete registration."
-    });
+            RegistrationService.GetUser(RegistrationData).then(function (d) {
+                if (d.data) {
+                    $window.location = '/Account/Confirm';
+                    $scope.Message = "Successfully logged in. Welcome";
+                    $scope.Success = true;
+                }
+                else {
+                    $scope.Message = "Please fill in all required fields to complete registration."
+                    $scope.showSuccessAlert(false);
+                    $scope.Success = false;
+                }
+            });
 
     };
 })

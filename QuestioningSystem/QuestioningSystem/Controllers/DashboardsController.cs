@@ -49,8 +49,6 @@ namespace QuestioningSystem.Controllers
                    }
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-<<<<<<< ours
-
        
         [HttpPost]
         public async Task<ActionResult> GetGroupCreatorChart()
@@ -71,13 +69,13 @@ namespace QuestioningSystem.Controllers
                     return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
-=======
+
         [Authorize]
         [HttpPost]
         public async Task<ActionResult> GetTestChart()
         {
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
->>>>>>> theirs
+
 	}
 }

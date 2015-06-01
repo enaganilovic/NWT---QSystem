@@ -1095,6 +1095,7 @@
     <Content Include="Views\Test\ExploreTests.cshtml" />
     <Content Include="Views\Home\AdminPanel.cshtml" />
     <Content Include="Views\Dashboards\GroupCreator.cshtml" />
+    <Content Include="Views\Group\SaveGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

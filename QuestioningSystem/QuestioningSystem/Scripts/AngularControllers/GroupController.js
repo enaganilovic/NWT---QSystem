@@ -6,6 +6,7 @@ var controller = app.controller('GroupController', function ($scope, GroupCreati
     $scope.maxNumberOfMembers = '';
     $scope.awesomeData;
     $scope.addUser;
+    $scope.Submitted = false;
     $scope.userValid = false;
     $scope.$watch('f3.$valid', function (newVal) {
         $scope.IsFormValid = newVal;
@@ -17,19 +18,25 @@ var controller = app.controller('GroupController', function ($scope, GroupCreati
         $scope.maxNumberOfMembers = 0;
         $scope.addUser = '';
         $scope.userValid = false;
+        $scope.Saved = false;
     };
     $scope.CreateGroup = function () {
+        $scope.Message = '';
         var groupData = {
             Title: $scope.titleOfGroup,
             MaxNumberOfMembers: $scope.maxNumberOfMembers,
             GroupMember: $scope.addUser
         };
+        $scope.Submitted = true;
         GroupCreationService.CreateGroup(groupData).then(function (d) {
             if (d.data.ID != undefined) {
                 $scope.Message = "Group successfully saved."
+                $scope.Saved = true;
             }
-            else
+            else {
                 $scope.Message = "Group could not be saved."
+                $scope.Saved = false;
+            }
         });
     };
 
