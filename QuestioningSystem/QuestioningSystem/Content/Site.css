@@ -6,6 +6,10 @@
     background-color:#5f5f5f;
 }
 
+table 
+{
+   background-color :transparent;
+}
 /* Set padding to keep content from hitting the edges */
 .body-content {
     font-family: 'Source Sans Pro', sans-serif;

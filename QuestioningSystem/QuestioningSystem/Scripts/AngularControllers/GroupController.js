@@ -40,6 +40,27 @@ var controller = app.controller('GroupController', function ($scope, GroupCreati
         });
     };
 
+    $scope.EditGroup = function () {
+        $scope.Message = '';
+        var groupData = {
+            Title: $scope.titleOfGroup,
+            MaxNumberOfMembers: $scope.maxNumberOfMembers,
+            GroupMember: $scope.addUser
+        };
+        $scope.Submitted = true;
+        GroupCreationService.CreateGroup(groupData).then(function (d) {
+            if (d.data.ID != undefined) {
+                $scope.Message = "Group successfully edited."
+                $scope.Saved = true;
+            }
+            else {
+                $scope.Message = "Group could not be edit."
+                $scope.Saved = false;
+            }
+        });
+
+    };
+
     $scope.CheckUser = function () {
         var userData = {
             UserName: $scope.addUser
@@ -61,6 +82,18 @@ controller.factory('GroupCreationService', function ($http) {
     fac.CreateGroup = function (d) {
         return $http({
             url: '/Group/SaveGroup',
+            method: 'POST',
+            data: JSON.stringify(d)
+        });
+    };
+    return fac;
+});
+
+controller.factory('GroupEditService', function ($http) {
+    var fac = {};
+    fac.EditGroup = function (d) {
+        return $http({
+            url: '/Group/Edit',
             method: 'POST',
             data: JSON.stringify(d)
         });

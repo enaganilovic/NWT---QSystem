@@ -235,6 +235,7 @@
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TranslatedWebViewPage.cs" />
     <Compile Include="Models\ViewModel\Group\GroupIDTitleViewModel.cs" />
+    <Compile Include="Models\ViewModel\Group\GroupListViewModel.cs" />
     <Compile Include="Models\ViewModel\Group\GroupsForExploreTest.cs" />
     <Compile Include="Models\ViewModel\Group\GroupsForExploreTestList.cs" />
     <Compile Include="Models\ViewModel\Group\GroupsViewModel.cs" />
@@ -1096,6 +1097,10 @@
     <Content Include="Views\Home\AdminPanel.cshtml" />
     <Content Include="Views\Dashboards\GroupCreator.cshtml" />
     <Content Include="Views\Group\SaveGroup.cshtml" />
+    <Content Include="Views\Group\Edit.cshtml" />
+    <Content Include="Views\Group\SaveChanges.cshtml" />
+    <Content Include="Views\Group\Delete.cshtml" />
+    <Content Include="Views\Group\ViewAllMembers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
