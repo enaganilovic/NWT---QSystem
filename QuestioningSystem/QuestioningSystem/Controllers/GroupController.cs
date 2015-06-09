@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuestioningSystem.Models;
 using QuestioningSystem.Models.ViewModel.Group;
+using System.Data.Entity;
 
 namespace QuestioningSystem.Controllers
 {
@@ -154,21 +155,28 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
-        public ActionResult ViewAllMembers(int Id)
+        public ActionResult ViewAllMembers(int Id, string userId = "")
         {
             QuestioningSystem.Models.ViewModel.Group.GroupViewModel model = new QuestioningSystem.Models.ViewModel.Group.GroupViewModel();
             model.Members = new List<ApplicationUser>();
             using (var context = ApplicationDbContext.Create())
             {
-                var query = context.Groups.Where(x => x.ID == Id).First();
+                var query = context.Groups.Where(x => x.ID == Id).Include(x => x.Members).FirstOrDefault();
                 var members = query.Members;
-                foreach (var member in members)
+               
+                if (!String.IsNullOrEmpty(userId))
                 {
-                    model.Members.Add(member);
+                    var userToDelete = context.Users.Where(x => x.Id == userId).FirstOrDefault();
+                    members.Remove(userToDelete);
+                    context.SaveChanges();
                 }
-                model.ID = query.ID;
-                model.Title = query.Title;
-                model.Creator = User.Identity.Name;
+                    foreach (var member in members)
+                    {
+                        model.Members.Add(member);
+                    }
+                    model.ID = query.ID;
+                    model.Title = query.Title;
+                    model.Creator = User.Identity.Name;
             }
             return View(model);
         }
