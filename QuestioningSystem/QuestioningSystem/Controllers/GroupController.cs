@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using QuestioningSystem.Models;
 using QuestioningSystem.Models.ViewModel.Group;
+using QuestioningSystem.Models.ViewModel;
 
 namespace QuestioningSystem.Controllers
 {
@@ -100,6 +101,7 @@ namespace QuestioningSystem.Controllers
 
         public ActionResult AssignToTest(string passId)
         {
+            
             TestGroupModel model = new TestGroupModel();
             model.groups = new GroupsViewModel();
             model.groups.Groups = new List<QuestioningSystem.Models.ViewModel.Group.GroupViewModel>();
@@ -123,6 +125,95 @@ namespace QuestioningSystem.Controllers
             return PartialView("~/Views/Group/AssignToTest.cshtml", model);
         }
 
+        [HttpPost]
+        public void AddUser(string groupid, string username, string notificationid)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                int groupID = Int32.Parse(groupid);
+                int notificationID = Int32.Parse(notificationid);
+                var group = context.Groups.Where(x => x.ID == groupID).First();
+                var user = context.Users.Where(x => x.UserName == username).First();
+                var activeNotication = context.Notifications.Where(x => x.ID == notificationID).First();
+                activeNotication.Activate = false;
+                var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                group.Members.Add(user);
+                string notificationText = "User " + User.Identity.Name + " add you to the group " + group.Title + ".";
+                Notification notification = new Notification();
+                notification.Type = 3;
+                notification.Activate = true;
+                notification.DateTime = DateTime.Now;
+                notification.Group = group;
+                notification.Message = notificationText;
+                notification.Sender = logedUser;
+                notification.Receiver = user;
+                context.Notifications.Add(notification);
+                context.SaveChanges();
+            }
+        }
 
+        [HttpPost]
+        public void Ok(string notificationid)
+        {
+            int notificationID = Int32.Parse(notificationid);
+            using (var context = ApplicationDbContext.Create())
+            {
+                var activeNotication = context.Notifications.Where(x => x.ID == notificationID).First();
+                activeNotication.Activate = false;
+                context.SaveChanges();
+            }
+        }
+
+        [HttpPost]
+        public void DeclineUser(string groupid, string username, string notificationid)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                int groupID = Int32.Parse(groupid);
+                int notificationID = Int32.Parse(notificationid);
+                var group = context.Groups.Where(x => x.ID == groupID).First();
+                var user = context.Users.Where(x => x.UserName == username).First();
+                var activeNotication = context.Notifications.Where(x => x.ID == notificationID).First();
+                activeNotication.Activate = false;
+                var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                group.Members.Add(user);
+                string notificationText = "User " + User.Identity.Name + " decline your request to join group " + group.Title + ".";
+                Notification notification = new Notification();
+                notification.Type = 3;
+                notification.Activate = true;
+                notification.DateTime = DateTime.Now;
+                notification.Group = group;
+                notification.Message = notificationText;
+                notification.Sender = logedUser;
+                notification.Receiver = user;
+                context.Notifications.Add(notification);
+                context.SaveChanges();
+            }
+        }
+
+        public ActionResult Assign(string groupId, string testId)
+        {
+            GroupTest groupTest = new GroupTest();
+            AssignTestGroup model = new AssignTestGroup();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var grId = Int32.Parse(groupId);
+                var tId = Int32.Parse(testId);
+                var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                var group = context.Groups.Where(x => x.ID == grId).First();
+                var test = context.Tests.Where(x => x.ID == tId).First();
+                groupTest.Groups = new List<Group>();
+                groupTest.Tests = new List<Test>();
+                groupTest.Groups.Add(group);
+                groupTest.Tests.Add(test);
+                //group.Tests.Add(test);
+                //test.Groups.Add(group);
+                context.GroupTests.Add(groupTest);
+                context.SaveChanges();
+                model.testName = test.Title;
+                model.groupName = group.Title;
+            }
+            return View(model);
+        }
 	}
 }

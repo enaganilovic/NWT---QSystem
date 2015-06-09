@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using QuestioningSystem.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity;
 
 namespace QuestioningSystem.Controllers
 {
@@ -25,7 +26,34 @@ namespace QuestioningSystem.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ListOfNotificationViewModel list = new ListOfNotificationViewModel();
+            list.Notifications = new List<NotificationViewModel>();
+
+            using (var context = ApplicationDbContext.Create())
+            {
+                var notifications = context.Notifications.Where(x => x.Receiver.UserName == User.Identity.Name).Where(x => x.Activate == true).Include(x => x.Sender).Include(x => x.Group).Include(x => x.Test).ToList();
+                foreach (var notification in notifications)
+                {
+                    NotificationViewModel model = new NotificationViewModel();
+                    model.Datetime = notification.DateTime;
+                    model.MessageText = notification.Message;
+                    model.SenderUserName = notification.Sender.UserName;
+                    model.NotificationID = notification.ID;
+                    if (notification.Group != null)
+                    {
+                        model.GroupName = notification.Group.Title;
+                        model.GroupId = notification.Group.ID;
+                    }
+                    if (notification.Test != null)
+                    {
+                        model.TestId = notification.Test.ID;
+                        model.TestName = notification.Test.Title;
+                    }
+                    model.Type = notification.Type;
+                    list.Notifications.Add(model);
+                }
+            }
+            return View(list);
         }
 
         public ActionResult About()

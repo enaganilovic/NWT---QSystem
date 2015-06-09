@@ -126,7 +126,8 @@ namespace QuestioningSystem.Controllers
             if (ModelState.IsValid) 
             { 
                 var user = new ApplicationUser() { UserName = model.UserName }; 
-                user.Email = model.Email; 
+                user.Email = model.Email;
+                user.Banned = false;
                 user.ConfirmedEmail = false; 
                 var result = await UserManager.CreateAsync(user, model.Password); 
                 if (result.Succeeded) 

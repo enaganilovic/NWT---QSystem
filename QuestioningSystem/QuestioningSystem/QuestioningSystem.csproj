@@ -209,6 +209,7 @@
     <Compile Include="ApiControllers\NotificationController.cs" />
     <Compile Include="ApiControllers\QuestionController.cs" />
     <Compile Include="ApiControllers\TestController.cs" />
+    <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -234,6 +235,7 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TranslatedWebViewPage.cs" />
+    <Compile Include="Models\ViewModel\AssignTestGroup.cs" />
     <Compile Include="Models\ViewModel\Group\GroupIDTitleViewModel.cs" />
     <Compile Include="Models\ViewModel\Group\GroupsForExploreTest.cs" />
     <Compile Include="Models\ViewModel\Group\GroupsForExploreTestList.cs" />
@@ -1095,10 +1097,13 @@
     <Content Include="Views\Test\ExploreTests.cshtml" />
     <Content Include="Views\Home\AdminPanel.cshtml" />
     <Content Include="Views\Dashboards\GroupCreator.cshtml" />
+    <Content Include="Views\Notifications\SaveNotification.cshtml" />
+    <Content Include="Views\Group\Assign.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
     <Folder Include="Views\Dashoboards\" />
+    <Folder Include="Views\Notification\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

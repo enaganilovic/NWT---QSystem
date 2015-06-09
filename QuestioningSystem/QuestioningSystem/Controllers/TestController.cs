@@ -205,9 +205,7 @@ namespace QuestioningSystem.Controllers
 
             using (var context = ApplicationDbContext.Create())
             {
-                string pom = User.Identity.Name;
-                var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
-                var query = context.Tests.Where(x => x.Creator.UserName != logedUser.UserName).Include(x => x.Creator).ToList();
+                var query = context.Tests.Where(x => x.Creator.UserName != User.Identity.Name).Include(x => x.Creator).ToList();
                 foreach (var item in query)
                 {
                     GroupsForExploreTest groups = new GroupsForExploreTest();
@@ -233,5 +231,7 @@ namespace QuestioningSystem.Controllers
             }
             return View(model);
         }
+
+      
 	}
 }
