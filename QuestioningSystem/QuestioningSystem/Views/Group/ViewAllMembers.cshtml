@@ -29,7 +29,6 @@
                         <td>@item.UserName</td>
                         <td>@item.PhoneNumber</td>
                         <td>@item.Email</td>
-                        <td><a href="Edit/@item.UserName">Edit</a></td>
                         <td>@Html.ActionLink("Delete", "ViewAllMembers", "Group",  new { Id = @Model.ID , userId = item.Id },null)</td>
                     </tr>
                     pom++;

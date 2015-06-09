@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using QuestioningSystem.Models;
 using QuestioningSystem.Models.ViewModel.Group;
 using QuestioningSystem.Models.ViewModel;
+using System.Data.Entity;
 
 namespace QuestioningSystem.Controllers
 {
@@ -253,6 +254,10 @@ namespace QuestioningSystem.Controllers
                         group.Title = item.Title;
                         groups.Groups.Add(group);
                     }
+                 }
+                return View(groups);
+            }
+        }
 
         [HttpPost]
         public void Ok(string notificationid)
@@ -266,11 +271,7 @@ namespace QuestioningSystem.Controllers
             }
         }
                      
-                 //   ViewBag.GroupNames = new SelectList(query, "ID", "Title");
-                }
-                return View(groups);
-            }
-        }
+
 
         [HttpPost]
         public void DeclineUser(string groupid, string username, string notificationid)
