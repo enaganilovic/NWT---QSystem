@@ -20,11 +20,10 @@
 
                 var data = new google.visualization.DataTable();
 
-                data.addColumn('string', 'Test Title');
-                data.addColumn('number', 'Number of Points');
-
-                for (var i = 0; i < chartsdata.Titles.length; i++) {
-                    data.addRow([chartsdata.Titles[i], chartsdata.Numbers[i]]);
+                data.addColumn('string', 'User');
+                data.addColumn('number', 'Number of Created Tests');
+                for (var i = 0; i < chartsdata.Usernames.length; i++) {
+                    data.addRow([chartsdata.Usernames[i], chartsdata.Numbers[i]]);
                 }
 
                 // Instantiate and draw our chart, passing in some options    

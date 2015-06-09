@@ -64,6 +64,7 @@ namespace QuestioningSystem.Controllers
                                 if (user != null)
                                 {
                                     users.Add(user);
+                                    group.Members.Add(user);
                                 }
                             }
                         }
@@ -86,6 +87,32 @@ namespace QuestioningSystem.Controllers
                 return new JsonResult { Data = "Could not save group.", JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+
+        [HttpPost]
+        [Authorize]
+        public ActionResult SaveChanges(string title, int maxNumber, int passId)
+        {
+            QuestioningSystem.Models.ViewModel.Group.GroupViewModel newGroup = new QuestioningSystem.Models.ViewModel.Group.GroupViewModel();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var oldGroup = context.Groups.Where(x => x.ID == passId).First();
+                //string[] nameLines = namesOfUsers.Split(',');
+                //foreach (var username in nameLines)
+                //{
+                //    if (username == "") continue;
+                //    var user = context.Users.Where(x => x.UserName == username).First();
+                //    users.Add(user);
+                //}
+                //oldGroup.Members.Clear();
+                //oldGroup.Members = users;
+                oldGroup.Title = title;
+                oldGroup.MaxNumberOfMembers = maxNumber;
+                oldGroup.ID = passId;
+                context.SaveChanges();
+            }
+            return View();
+        }
+
         [HttpGet]
         public async Task<ActionResult> GetAllData()
         {
@@ -97,6 +124,61 @@ namespace QuestioningSystem.Controllers
                 return new JsonResult { Data = groups, JsonRequestBehavior = JsonRequestBehavior.AllowGet }; 
             }
 
+        }
+
+
+        public ActionResult Edit(int Id)
+        {
+            QuestioningSystem.Models.ViewModel.Group.GroupViewModel group = new QuestioningSystem.Models.ViewModel.Group.GroupViewModel();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var query = context.Groups.Where(x => x.ID == Id).FirstOrDefault();
+                if (query != null)
+                {
+                    group.Title = query.Title;
+                    group.MaxNumberOfMembers = query.MaxNumberOfMembers;
+                    group.ID = Id;
+                }
+            }
+            return View(group);
+        }
+
+        public ActionResult Delete(int Id)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var query = context.Groups.Where(x => x.ID == Id).First();
+                query.Members.Clear();
+                context.Groups.Remove(query);
+                context.SaveChanges();
+            }
+            return View();
+        }
+
+        public ActionResult ViewAllMembers(int Id, string userId = "")
+        {
+            QuestioningSystem.Models.ViewModel.Group.GroupViewModel model = new QuestioningSystem.Models.ViewModel.Group.GroupViewModel();
+            model.Members = new List<ApplicationUser>();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var query = context.Groups.Where(x => x.ID == Id).Include(x => x.Members).FirstOrDefault();
+                var members = query.Members;
+               
+                if (!String.IsNullOrEmpty(userId))
+                {
+                    var userToDelete = context.Users.Where(x => x.Id == userId).FirstOrDefault();
+                    members.Remove(userToDelete);
+                    context.SaveChanges();
+                }
+                    foreach (var member in members)
+                    {
+                        model.Members.Add(member);
+                    }
+                    model.ID = query.ID;
+                    model.Title = query.Title;
+                    model.Creator = User.Identity.Name;
+            }
+            return View(model);
         }
 
         public ActionResult AssignToTest(string passId)
@@ -152,6 +234,26 @@ namespace QuestioningSystem.Controllers
             }
         }
 
+        public ActionResult Manage()
+        {
+            GroupListViewModel groups = new GroupListViewModel();
+            groups.Groups = new List<Models.ViewModel.Group.GroupViewModel>();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var loggedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                if (loggedUser != null)
+                {
+                    var query = context.Groups.Where(x => x.Creator.Id == loggedUser.Id).ToList();
+                    foreach (var item in query)
+                    {
+                        QuestioningSystem.Models.ViewModel.Group.GroupViewModel group = new QuestioningSystem.Models.ViewModel.Group.GroupViewModel();
+                        group.ID = item.ID;
+                        group.Creator = item.Creator.UserName;
+                        group.MaxNumberOfMembers = item.MaxNumberOfMembers;
+                        group.Title = item.Title;
+                        groups.Groups.Add(group);
+                    }
+
         [HttpPost]
         public void Ok(string notificationid)
         {
@@ -161,6 +263,12 @@ namespace QuestioningSystem.Controllers
                 var activeNotication = context.Notifications.Where(x => x.ID == notificationID).First();
                 activeNotication.Activate = false;
                 context.SaveChanges();
+            }
+        }
+                     
+                 //   ViewBag.GroupNames = new SelectList(query, "ID", "Title");
+                }
+                return View(groups);
             }
         }
 

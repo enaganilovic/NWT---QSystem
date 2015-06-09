@@ -6,6 +6,7 @@ var controller = app.controller('GroupController', function ($scope, GroupCreati
     $scope.maxNumberOfMembers = '';
     $scope.awesomeData;
     $scope.addUser;
+    $scope.Submitted = false;
     $scope.userValid = false;
     $scope.$watch('f3.$valid', function (newVal) {
         $scope.IsFormValid = newVal;
@@ -17,20 +18,47 @@ var controller = app.controller('GroupController', function ($scope, GroupCreati
         $scope.maxNumberOfMembers = 0;
         $scope.addUser = '';
         $scope.userValid = false;
+        $scope.Saved = false;
     };
     $scope.CreateGroup = function () {
+        $scope.Message = '';
         var groupData = {
             Title: $scope.titleOfGroup,
             MaxNumberOfMembers: $scope.maxNumberOfMembers,
             GroupMember: $scope.addUser
         };
+        $scope.Submitted = true;
         GroupCreationService.CreateGroup(groupData).then(function (d) {
             if (d.data.ID != undefined) {
                 $scope.Message = "Group successfully saved."
+                $scope.Saved = true;
             }
-            else
+            else {
                 $scope.Message = "Group could not be saved."
+                $scope.Saved = false;
+            }
         });
+    };
+
+    $scope.EditGroup = function () {
+        $scope.Message = '';
+        var groupData = {
+            Title: $scope.titleOfGroup,
+            MaxNumberOfMembers: $scope.maxNumberOfMembers,
+            GroupMember: $scope.addUser
+        };
+        $scope.Submitted = true;
+        GroupCreationService.CreateGroup(groupData).then(function (d) {
+            if (d.data.ID != undefined) {
+                $scope.Message = "Group successfully edited."
+                $scope.Saved = true;
+            }
+            else {
+                $scope.Message = "Group could not be edit."
+                $scope.Saved = false;
+            }
+        });
+
     };
 
     $scope.CheckUser = function () {
@@ -54,6 +82,18 @@ controller.factory('GroupCreationService', function ($http) {
     fac.CreateGroup = function (d) {
         return $http({
             url: '/Group/SaveGroup',
+            method: 'POST',
+            data: JSON.stringify(d)
+        });
+    };
+    return fac;
+});
+
+controller.factory('GroupEditService', function ($http) {
+    var fac = {};
+    fac.EditGroup = function (d) {
+        return $http({
+            url: '/Group/Edit',
             method: 'POST',
             data: JSON.stringify(d)
         });

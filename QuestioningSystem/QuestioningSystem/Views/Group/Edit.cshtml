@@ -1,0 +1,44 @@
+﻿@model QuestioningSystem.Models.ViewModel.Group.GroupViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+<script src="~/Scripts/jquery-2.1.1.js" type="text/javascript"></script>
+<h2>Edit</h2>
+<script>
+    $(function () {
+
+        $("#Edit").click(function () {
+            var id = @Model.ID
+            $('input[name="passId"]').val(id);
+
+        });
+    });
+
+   
+</script>
+
+<div>
+    <form action="@Url.Action("SaveChanges", "Group")" method="post">
+    <table>
+        <tr>
+           <td>Title:</td> 
+            <td>
+                <input type="text" value="@Model.Title" name="title" />
+            </td>
+        </tr>
+          <tr>
+              <td>Maximal number of members:</td>
+            <td>
+              <input type="number" value="@Model.MaxNumberOfMembers" name="maxNumber"/>
+            </td>
+            </tr>
+            <tr>
+            <td> <input type="hidden" name="passId" value="" /></td>
+            </tr>
+           <tr>
+              <td> <input type="submit" value="Edit" name="SaveChanges" id="Edit" /> </td>
+           </tr>
+    </table>
+         </form>         
+</div>
+
