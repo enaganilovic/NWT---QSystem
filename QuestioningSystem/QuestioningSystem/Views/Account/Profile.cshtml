@@ -9,7 +9,7 @@
      @Model.Email <br />
 
      @_("Image")
-     <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" />
+     <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
     <input type="file" name="fileImage" value="@_("Choose picture")" />
     <input type="submit" value="@_("Change picture").ToString()" />
 }

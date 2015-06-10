@@ -20,7 +20,7 @@ msgstr "Korisnicko ime obavezno"
 msgid "Password"
 msgstr "Sifra"
 
-#: ..\Views\Account\Profile.cshtml:6
+#: ..\Views\Account\Profile.cshtml:11
 msgid "Image"
 msgstr ""
 
