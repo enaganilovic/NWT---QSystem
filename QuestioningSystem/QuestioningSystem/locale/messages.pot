@@ -2,50 +2,54 @@
 msgid "Target"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:20
+#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:23
 msgid "Log in"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:23
 #: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
-#: ..\Views\Group\Create.cshtml:19
+#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:27
+#: ..\Views\Group\Create.cshtml:22
 msgid "Username required"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:39
+#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:43
 msgid "Password"
 msgstr ""
 
+#: ..\Views\Account\Profile.cshtml:6
+msgid "Image"
+msgstr ""
+
 #: ..\Views\Account\Register.cshtml:7 ..\Views\Account\Register.cshtml:10
-#: ..\Views\Shared\_LoginPartial.cshtml:19
+#: ..\Views\Shared\_LoginPartial.cshtml:22
 msgid "Register"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:52
+#: ..\Views\Account\Register.cshtml:56
 msgid "Confirm Password"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:60
+#: ..\Views\Account\Register.cshtml:64
 msgid "Email"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:74
+#: ..\Views\Account\Register.cshtml:78
 msgid "First Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:87
+#: ..\Views\Account\Register.cshtml:91
 msgid "Last Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:100
+#: ..\Views\Account\Register.cshtml:104
 msgid "Phone Number"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:114
+#: ..\Views\Account\Register.cshtml:118
 msgid "Age"
 msgstr ""
 
@@ -61,15 +65,15 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:15
+#: ..\Views\Group\Create.cshtml:18
 msgid "Group title"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:33
+#: ..\Views\Group\Create.cshtml:36
 msgid "Maximal number of members"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:40
+#: ..\Views\Group\Create.cshtml:43
 msgid "Add user to this group (Optional)"
 msgstr ""
 
@@ -95,10 +99,6 @@ msgstr ""
 
 #: ..\Views\Home\Contact.cshtml:15
 msgid "Support"
-msgstr ""
-
-#: ..\Views\Home\Index.cshtml:7
-msgid "Welcome to QSystem home page"
 msgstr ""
 
 #: ..\Views\Shared\_Layout.cshtml:36
@@ -127,4 +127,8 @@ msgstr ""
 
 #: ..\Views\Shared\_LoginPartial.cshtml:10
 msgid "Hello "
+msgstr ""
+
+#: ..\Views\Shared\_LoginPartial.cshtml:13
+msgid "My Profile"
 msgstr ""
