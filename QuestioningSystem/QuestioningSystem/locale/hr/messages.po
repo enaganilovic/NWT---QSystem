@@ -69,11 +69,11 @@ msgstr ""
 msgid "Group title"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:36
+#: ..\Views\Group\Create.cshtml:34
 msgid "Maximal number of members"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:43
+#: ..\Views\Group\Create.cshtml:41
 msgid "Add user to this group (Optional)"
 msgstr ""
 
