@@ -14,6 +14,7 @@ using System.Text;
 using System.Net;
 using CaptchaMvc;
 using CaptchaMvc.HtmlHelpers;
+using System.IO;
 namespace QuestioningSystem.Controllers
 {
     [Authorize]
@@ -38,6 +39,36 @@ namespace QuestioningSystem.Controllers
         {
             ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+
+        public ActionResult Profile()
+        {
+            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            if (user == null)
+            {
+                throw new Exception("Nepostojeći korisnik!");
+            }
+
+            return View(user);
+
+        }
+
+        [HttpPost]
+        public ActionResult Profile(HttpPostedFileBase fileImage)
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    //var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/Images/"), User.Identity.GetUserName() + ".jpg");
+                    file.SaveAs(path);
+                }
+            }
+
+            return RedirectToAction("Profile");
         }
 
         //
@@ -126,7 +157,8 @@ namespace QuestioningSystem.Controllers
             if (ModelState.IsValid) 
             { 
                 var user = new ApplicationUser() { UserName = model.UserName }; 
-                user.Email = model.Email; 
+                user.Email = model.Email;
+                user.Banned = false;
                 user.ConfirmedEmail = false; 
                 var result = await UserManager.CreateAsync(user, model.Password); 
                 if (result.Succeeded) 

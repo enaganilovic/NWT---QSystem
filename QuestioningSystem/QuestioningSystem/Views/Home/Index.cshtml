@@ -1,24 +1,134 @@
-﻿@{
+﻿@model QuestioningSystem.Models.ListOfNotificationViewModel 
+
+@{
     ViewBag.Title = "Home Page";
 }
+<br />
+<script>
+    $(function () {
+        $('input[type="button"]').click(function () {
+            var butId = $(this).attr('id');
+            var arr = butId.split("+");
+            var rowId = document.getElementById('pom+' + arr[1]).id;
+            var myInteger = parseInt(arr[1]);
+            if (butId.indexOf("Accept") >= 0) {
+                var groupid = document.getElementById('GroupId+' + arr[1]).value;
+                var username = document.getElementById('User+' + arr[1]).value;
+                var notificationid = document.getElementById('NotificationID+' + arr[1]).value;
+                $.ajax({
+                    type: "POST",
+                    url: "/Group/Adduser",
+                    data: {
+                        groupid: groupid,
+                        username: username,
+                        notificationid: notificationid
+                    },
+                    success: function () {
+                        window.location.reload(true);
+                    }
+                });
+            }
+            else if (butId.indexOf("Decline") >= 0) {
+                var groupid = document.getElementById('GroupId+' + arr[1]).value;
+                var username = document.getElementById('User+' + arr[1]).value;
+                var notificationid = document.getElementById('NotificationID+' + arr[1]).value;
+                $.ajax({
+                    type: "POST",
+                    url: "/Group/DeclineUser",
+                    data: {
+                        groupid: groupid,
+                        username: username,
+                        notificationid: notificationid
+                    },
+                    success: function () {
+                        window.location.reload(true);
+                    }
+                });
+            }
+            else {
+                var notificationid = document.getElementById('NotificationID+' + arr[1]).value;
+                $.ajax({
+                    type: "POST",
+                    url: "/Group/Ok",
+                    data: {
+                        notificationid: notificationid
+                    },
+                    success: function () {
+                        window.location.reload(true);
+                    }
+                });
+            }
+        });
+    });
 
-<div class="jumbotron">
-    <h1> 
-    @_("Welcome to QSystem home page")
-    </h1>
-    <p class="lead"></p>
-    
-</div>
+    //$("input").click(function (e) {
+    //    var idClicked = e.target.id;
+    //    //var arr = idClicked.split(' ');
+    //    //if (idClicked.indexOf('Accept') !== -1) {
+    //    //    var groupid = "GroupId " + arr[1];
+    //    //    var username = "User " + arr[1];
+    //    //    var groupID = $("#GroupId " + arr[1]).val();
+    //    //    var Username = $("#User " + arr[1]).val();
+    //    //    var pom = $("#pom " + arr[1]).val();
+    //    //    $.ajax({
+    //    //        type: "POST",
+    //    //        url: "/Group/AddUser",
+    //    //        data: {
+    //    //            groupId: groupID,
+    //    //            Username: Username
+    //    //        },
+    //    //        success: function (result) {
+    //    //            $('#pom ' + arr[1]).remove();
+    //    //        }
+    //    //    });
 
-<div class="row">
-    <div class="col-lg-4">
-   
-        
-    </div>
-    <div class="col-lg-4">
-        
-    </div>
-    <div class="col-lg-4">
-        
-    </div>
-</div>
+    //    }
+    //    if (idClicked.indexOf('Reject') !== -1) {
+
+    //    }
+    //    if (idClicked.indexOf('OK') !== -1) {
+
+    //    }
+    //});
+</script>
+<table class="myTable">
+    @{
+        int pom = 1;
+        <input type="hidden" name="NumberOfElements" id="NumberOfElements" value="@Model.Notifications.Count" />
+        foreach (var item in @Model.Notifications)
+        {
+            if (@item.Type == 1)
+            {
+                <input type="hidden" name="pom @pom" id="pom @pom" value="@pom" />
+                <tr id="pom+@pom">
+                    <th>
+                        @item.MessageText
+                    </th>
+                    <td>
+                        <input type="hidden" name="NotificationID+@pom" id="NotificationID+@pom" value="@item.NotificationID">
+                        <input type="hidden" name="GroupId+@pom" id="GroupId+@pom" value="@item.GroupId">
+                        <input type="hidden" name="User+@pom" id="User+@pom" value="@item.SenderUserName">
+                        <input type="button" name="Accept+@pom" id="Accept+@pom" value="Accept" />
+                        &nbsp; &nbsp;
+                        <input type="button" name="Reject+@pom" id="Reject+@pom" value="Reject" />
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr id="pom+@pom">
+                    <th>
+                        @item.MessageText
+                    </th>
+                    <td>
+                        <input type="hidden" name="NotificationID+@pom" id="NotificationID+@pom" value="@item.NotificationID">
+                        <input type="button" name="OK+@pom" id="OK+@pom" value="OK" />
+                    </td>
+                </tr>
+            }
+            pom++;
+        }
+    }
+    <br />
+</table>
+

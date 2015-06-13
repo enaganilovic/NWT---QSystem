@@ -11,9 +11,7 @@ namespace QuestioningSystem.Models.ViewModel.Group
         public string Creator { get; set; }
         public int ID { get; set; }
         public List<ApplicationUser> Members { get; set; }
-
         public string GroupMember { get; set; }
-
         public int MaxNumberOfMembers { get; set; }
     }
 }

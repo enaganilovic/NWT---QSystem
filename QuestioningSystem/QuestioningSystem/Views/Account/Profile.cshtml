@@ -1,0 +1,15 @@
+﻿@model QuestioningSystem.Models.ApplicationUser
+
+@using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    <br /><br /><br />
+     @Model.UserName <br />
+     @Model.FirstName <br />
+     @Model.LastName <br />
+     @Model.Email <br />
+
+     @_("Image")
+     <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
+    <input type="file" name="fileImage" value="@_("Choose picture")" />
+    <input type="submit" value="@_("Change picture").ToString()" />
+}

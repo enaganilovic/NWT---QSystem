@@ -12,10 +12,14 @@
 <div ng-controller="RegisterController">
     <form novalidate name="f2" ng-submit="Register()">
       @*  <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@GetAntiForgeryToken()'"  />  *@
-        <div style="color:rgb(255, 0, 0)">{{Message}}</div><br />
+    
+         <div ng-show="Success && Submitted" class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>{{Message}}</div><br />
+         <div ng-show="!Success && Submitted" class="alert alert-danger alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>{{Message}}</div><br />
         <table style="border-collapse:collapse" ng-show="!IsLoggedIn">
             <tr>
-                <td class="labelStyle" font">
+                <td class="labelStyle">
                 @_("Username"):
                 </td>
                 <td>
@@ -38,14 +42,22 @@
             <tr>
                 <td class="labelStyle">@_("Password"):</td>
                 <td>
-                    <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
-                </td>
+                    <input type="password" ng-model="Password" name="cPassword" ng-class="Submitted?'ng-dirty':''"  ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required autofocus/>
+                </td>  
+<td>
+<div role="alert">
+      <span class="error" ng-show="f2.cPassword.$error.pattern && f2.cPassword.$dirty">
+        <div style="color:rgb(255, 0, 0)">Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)</div>
+</span>
+    </div>
+                </td>                                                                                                             
             </tr>
             <tr>
                 <td class="labelStyle">@_("Confirm Password"):</td>
                 <td>
                     <input type="password" ng-model="ConfirmedPassword" name="rCPassword" ng-class="Submitted?'ng-dirty':''" required autofocus/>
                 </td>
+
             </tr>
             
              <tr>

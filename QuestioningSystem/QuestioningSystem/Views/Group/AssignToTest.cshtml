@@ -1,14 +1,17 @@
-﻿@model WebApplication2.Models.ViewModel.TestGroupModel
+﻿@model QuestioningSystem.Models.TestGroupModel
 
 @{
     ViewBag.Title = "AssignToTest";
 }
+<div id="AssignMessage" class="alert alert-success" role="alert" hidden></div>
 <script>
     $(function () {
        
         $("#Confirm").click(function () {
                 var testId = @Model.test.ID
-           
+                $("#AssignMessage").text('You test @Model.test.Title is assigned to this group.')
+                $("#AssignMessage").text('You test @Model.test.Title is assigned to this group.')
+            $('.imageShowWrapper').show();
                 $.ajax({
                     type: "POST",
                     url: "/Group/Assign",
@@ -23,12 +26,17 @@
     </script>
  
 <h3>Groups:</h3>
-<select id="groupID" style="margin-top: 6px">
-@*<div> @Model.test.Title </div>*@
-@{foreach(var group in @Model.groups.Groups)
-  {
-      <option value="@group.ID">@group.Title</option>
-  }
-}
-</select>
-<input type="button" value ="Confirm"  id="Confirm"/>
+<table>
+    <tr>
+        <select id="groupID" style="margin-top: 6px">
+            @*<div> @Model.test.Title </div>*@
+            @{foreach (var group in @Model.groups.Groups)
+            {
+                <option value="@group.ID">@group.Title</option>
+            }
+            }
+        </select>
+        <input type="button" value="Confirm" id="Confirm" />
+    </tr>
+</table>
+

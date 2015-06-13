@@ -2,50 +2,54 @@
 msgid "Target"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:20
+#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:23
 msgid "Log in"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:19
+#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
 #: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
-#: ..\Views\Group\Create.cshtml:19
+#: ..\Views\Account\Login.cshtml:22 ..\Views\Account\Register.cshtml:27
+#: ..\Views\Group\Create.cshtml:22
 msgid "Username required"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:39
+#: ..\Views\Account\Login.cshtml:36 ..\Views\Account\Register.cshtml:43
 msgid "Password"
 msgstr ""
 
+#: ..\Views\Account\Profile.cshtml:11
+msgid "Image"
+msgstr ""
+
 #: ..\Views\Account\Register.cshtml:7 ..\Views\Account\Register.cshtml:10
-#: ..\Views\Shared\_LoginPartial.cshtml:19
+#: ..\Views\Shared\_LoginPartial.cshtml:22
 msgid "Register"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:45
+#: ..\Views\Account\Register.cshtml:56
 msgid "Confirm Password"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:52
+#: ..\Views\Account\Register.cshtml:64
 msgid "Email"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:66
+#: ..\Views\Account\Register.cshtml:78
 msgid "First Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:79
+#: ..\Views\Account\Register.cshtml:91
 msgid "Last Name"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:92
+#: ..\Views\Account\Register.cshtml:104
 msgid "Phone Number"
 msgstr ""
 
-#: ..\Views\Account\Register.cshtml:106
+#: ..\Views\Account\Register.cshtml:118
 msgid "Age"
 msgstr ""
 
@@ -61,15 +65,19 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:15
+#: ..\Views\Group\Create.cshtml:18
 msgid "Group title"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:23
+#: ..\Views\Group\Create.cshtml:36
 msgid "Maximal number of members"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:57
+#: ..\Views\Group\Create.cshtml:43
+msgid "Add user to this group (Optional)"
+msgstr ""
+
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:61
 msgid "About"
 msgstr ""
 
@@ -81,7 +89,7 @@ msgstr ""
 msgid "Use this area to provide additional information"
 msgstr ""
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:58
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
 msgid "Contact"
 msgstr ""
 
@@ -93,39 +101,23 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: ..\Views\Home\Index.cshtml:7
-msgid "Welcome to QSystem home page"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:32
+#: ..\Views\Shared\_Layout.cshtml:36
 msgid "Tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:34
-msgid "New test"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:35
-msgid "Manage tests"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:36
+#: ..\Views\Shared\_Layout.cshtml:40
 msgid "My tests"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:37
-msgid "Explore tests"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:41
+#: ..\Views\Shared\_Layout.cshtml:45
 msgid "Groups"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:48
+#: ..\Views\Shared\_Layout.cshtml:52
 msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:70
+#: ..\Views\Shared\_Layout.cshtml:74
 msgid "All rights reserved"
 msgstr ""
 
@@ -135,4 +127,8 @@ msgstr ""
 
 #: ..\Views\Shared\_LoginPartial.cshtml:10
 msgid "Hello "
+msgstr ""
+
+#: ..\Views\Shared\_LoginPartial.cshtml:13
+msgid "My Profile"
 msgstr ""

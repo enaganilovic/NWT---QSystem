@@ -51,11 +51,11 @@
            <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@_("Dashboards") <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a> @Html.ActionLink("Users", "UserDashboard", "Dashboards")</a></li>
-            <li><a> @Html.ActionLink("Groups", "Group", "Dashboards")</a></li>
+            <li><a> @Html.ActionLink("Group - Member", "Group", "Dashboards")</a></li>
+            <li><a> @Html.ActionLink("Group - Creator", "GroupCreator", "Dashboards")</a></li>
+            <li><a> @Html.ActionLink("Notifications", "Notifications", "Dashboards")</a></li>
             <li><a> @Html.ActionLink("Tests", "TestDashboard", "Dashboards")</a></li>
-             <li><a> @Html.ActionLink("Notifications", "Notifications", "Dashboards")</a></li>
-            
+            <li><a> @Html.ActionLink("Users", "UserDashboard", "Dashboards")</a></li>
           </ul>
         </li>
                     <li>@Html.ActionLink(@_("About").ToString(), "About", "Home")</li>
