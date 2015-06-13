@@ -6,17 +6,17 @@ msgstr ""
 msgid "Log in"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:16 ..\Views\Account\Register.cshtml:23
+#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
 #: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:27
+#: ..\Views\Account\Login.cshtml:22 ..\Views\Account\Register.cshtml:27
 #: ..\Views\Group\Create.cshtml:22
 msgid "Username required"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:33 ..\Views\Account\Register.cshtml:43
+#: ..\Views\Account\Login.cshtml:36 ..\Views\Account\Register.cshtml:43
 msgid "Password"
 msgstr ""
 

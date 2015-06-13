@@ -2,6 +2,9 @@
 .controller('LoginController', function ($scope, LoginService, $window) {
     $scope.IsLoggedIn = false;
     $scope.Message = '';
+    $scope.Success = false;
+    $scope.showSuccessAlert = false;
+    $scope.showFailureAlert = false;
     $scope.Submitted = false;
     $scope.IsFormValid = false;
     $scope.UserName = '';
@@ -18,13 +21,17 @@
         };
         $scope.Submitted = true;
         LoginService.GetUser(LoginData).then(function (d) {
-           if (d.data.Id != undefined) {
+            if (d.data.Id != undefined) {
                 $scope.IsLoggedIn = true;
                 $window.location = '/Home/Index';
                 $scope.Message = "Successfully logged in. Welcome";
+                $scope.Success = true;
             }
-            else
-                alert("Invalid credentials");
+            else {
+                $scope.Message = "Invalid credentials!"
+                $scope.showSuccessAlert(false);
+                $scope.Success = false;
+            }
                     });
 
     };

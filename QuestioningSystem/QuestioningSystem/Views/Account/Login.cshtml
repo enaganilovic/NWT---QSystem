@@ -10,7 +10,10 @@
 <div ng-controller="LoginController">
     <form novalidate name="f1" ng-submit="Login()">
       @*  <input id="antiForgeryToken" data-ng-model="antiForgeryToken" type="hidden" data-ng-init="antiForgeryToken='@GetAntiForgeryToken()'"  />  *@
-        <div style="color:rgb(255, 0, 0)">{{Message}}</div>
+        <div ng-show="Success && Submitted" class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>{{Message}}</div><br />
+        <div ng-show="!Success && Submitted" class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>{{Message}}</div><br />
         <table ng-show="!IsLoggedIn">
             <tr>
                 <td class="labelStyle">@_("Username"):</td>
