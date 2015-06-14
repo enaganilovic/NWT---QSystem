@@ -159,6 +159,8 @@ namespace QuestioningSystem.Controllers
                 var user = new ApplicationUser() { UserName = model.UserName }; 
                 user.Email = model.Email;
                 user.Banned = false;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
                 user.ConfirmedEmail = false; 
                 var result = await UserManager.CreateAsync(user, model.Password); 
                 if (result.Succeeded) 
