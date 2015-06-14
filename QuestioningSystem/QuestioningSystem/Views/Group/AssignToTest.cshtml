@@ -10,7 +10,6 @@
         $("#Confirm").click(function () {
                 var testId = @Model.test.ID
                 $("#AssignMessage").text('You test @Model.test.Title is assigned to this group.')
-                $("#AssignMessage").text('You test @Model.test.Title is assigned to this group.')
             $('.imageShowWrapper').show();
                 $.ajax({
                     type: "POST",

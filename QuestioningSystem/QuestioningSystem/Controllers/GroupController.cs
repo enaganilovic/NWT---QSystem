@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using QuestioningSystem.Models;
 using QuestioningSystem.Models.ViewModel.Group;
 using QuestioningSystem.Models.ViewModel;
+using System.Data.Entity;
 
 namespace QuestioningSystem.Controllers
 {
@@ -253,6 +254,10 @@ namespace QuestioningSystem.Controllers
                         group.Title = item.Title;
                         groups.Groups.Add(group);
                     }
+                }
+                return View(groups);
+            }
+        }
 
         [HttpPost]
         public void Ok(string notificationid)
@@ -266,11 +271,7 @@ namespace QuestioningSystem.Controllers
             }
         }
                      
-                 //   ViewBag.GroupNames = new SelectList(query, "ID", "Title");
-                }
-                return View(groups);
-            }
-        }
+
 
         [HttpPost]
         public void DeclineUser(string groupid, string username, string notificationid)
@@ -310,16 +311,9 @@ namespace QuestioningSystem.Controllers
                 var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
                 var group = context.Groups.Where(x => x.ID == grId).First();
                 var test = context.Tests.Where(x => x.ID == tId).First();
-                groupTest.Groups = new List<Group>();
-                groupTest.Tests = new List<Test>();
-                groupTest.Groups.Add(group);
-                groupTest.Tests.Add(test);
-                //group.Tests.Add(test);
-                //test.Groups.Add(group);
-                context.GroupTests.Add(groupTest);
+                group.Tests.Add(test);
+                test.Groups.Add(group);
                 context.SaveChanges();
-                model.testName = test.Title;
-                model.groupName = group.Title;
             }
             return View(model);
         }

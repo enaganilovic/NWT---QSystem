@@ -243,6 +243,7 @@
     <Compile Include="Models\ViewModel\Group\GroupsViewModel.cs" />
     <Compile Include="Models\ViewModel\Group\GroupViewModel.cs" />
     <Compile Include="Models\ViewModel\TestGroupModel.cs" />
+    <Compile Include="Models\ViewModel\Test\TestModels.cs" />
     <Compile Include="Models\ViewModel\Test\TestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1105,6 +1106,9 @@
     <Content Include="Views\Group\ViewAllMembers.cshtml" />
     <Content Include="Views\Notifications\SaveNotification.cshtml" />
     <Content Include="Views\Group\Assign.cshtml" />
+    <Content Include="Views\Test\JoinTest.cshtml" />
+    <Content Include="Views\Test\SaveCompletedTest.cshtml" />
+    <Content Include="Views\Test\MyTests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />

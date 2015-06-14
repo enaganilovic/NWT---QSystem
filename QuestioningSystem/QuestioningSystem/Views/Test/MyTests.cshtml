@@ -1,0 +1,34 @@
+﻿@model  QuestioningSystem.Models.TestModels 
+@{
+    ViewBag.Title = "MyTests";
+}
+
+<h2>MyTests</h2>
+
+
+    <td> <input type="hidden" name="passId" value="1" /></td>
+    <table class="table">
+
+        <tr>
+            <th>Test Name</th>
+            <th>Date</th>
+            <th>Duration</th>
+            <th>Creator</th>
+        </tr>
+
+    @{
+
+    foreach (var item in @Model.listOfTest)
+    {
+        <tr>
+            <td> @item.TestName</td>
+            <td> @item.DateTime</td>
+            <td> @item.DurationTime min </td>
+            <td> @item.Creator </td>
+            <td><a href="JoinTest/@item.ID">Join test</a></td>
+        </tr>
+    }
+    }
+    </table>
+
+

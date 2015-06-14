@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "JoinTest";
+}
+<script src="~/Scripts/jquery-2.1.1.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        var duration = @Model.DurationTime
+            duration *= 60 * 1000;
+        $('.remaining').attr('id',duration);
+        $('div[id]').each(function () {
+            var $this = $(this);
+            var diff = parseInt($this.attr("id"));
+            var curDate = (new Date()).getMilliseconds();
+            countdown = setInterval(function () {
+                    diff = diff - 1000;
+                    var h = Math.floor(diff / 3600000);
+                    var m = Math.floor((diff - (h * 3600000)) / 60000);
+                    var s = Math.floor((diff - (h * 3600000) - (m * 60000)) / 1000);
+                    var goodDate = h + ":" + m + ":" + s;
+                    $('.remain', $this).html(goodDate);
+                    if (goodDate === '0:0:0') {
+                        alert("Time up!");
+                        $("#submitTest").click();
+                    }
+            }, 1000);
+        });
+
+        $("#submitTest").click(function () {
+             var questionAnswerPairs = [];
+
+             $('table > tbody > tr').each(function () {
+                 var question = $(this).find("td [name='Question']").val();
+                 var questionID = $(this).find("td [name='Question']").attr("id");
+                 var questionAnswerPair = {
+                     QuestionID: questionID,
+                     Question: question,
+                     Answers: []
+                 };
+
+                 $(this).find('input:radio').each(function () {
+                     var answer = $(this);
+                     var answerText = answer.closest('td').find('input:text').val();
+                     var answerId = answer.closest('td').find('input:text').attr("id");
+                     var isChecked = answer.is(':checked');
+                     questionAnswerPair.Answers.push({
+                         AnswerId: answerId,
+                         Text: answerText,
+                         IsChecked: isChecked
+                     });
+                 });
+
+                 questionAnswerPairs.push(questionAnswerPair);
+             });
+
+             var request = {
+                 ID: '@Model.ID',
+                 QuestionAnswerPairs: questionAnswerPairs
+             };
+
+             $.ajax({
+                 type: "POST",
+                 url: "/Test/SaveCompletedTest",
+                 data: JSON.stringify(request),
+                 contentType: 'application/json; charset=UTF-8',
+                 success: function (result) {
+                 }
+             });
+         });
+
+    });
+</script>
+<br />
+<br />
+
+<form action="@Url.Action("SaveCompletedTest", "Test")" method="post">
+
+    @{
+        <strong>
+            <div class="col-md-3"> Test name</div>    <div class="col-md-3"> Duration</div>    <div class="col-md-3"> Creator</div><div class="col-md-3"> Date and Time</div>
+        </strong>
+        <br />
+        <div class="col-md-3">@Model.TestName</div>
+        <div class="col-md-3">@Model.DurationTime min</div>
+        <div class="col-md-3">@Model.Creator</div>
+        <div class="col-md-3">@Model.DateTime</div>
+
+
+
+        <br />
+
+        <div class="remaining" id=""><span class="remain"></span></div>
+
+        <br />
+        <table class="table" id="tabela" name="tabela">
+
+            @{
+                int qCount = 0;
+                int pom = 1;
+                foreach (var question in @Model.QuestionAnswerPairs)
+                {
+
+                    <tr>
+                        <th> Question @pom </th>
+                        <td> <input type="text" name="Question" id="@question.QuestionID " value="@question.Question" /></td>
+                    </tr>
+                    <tr>
+                        @foreach (var answer in @question.Answers)
+                        {
+                            qCount = 0;
+                            <td>
+
+                                <input type="radio" value="@qCount.ToString() " name="@pom" />
+                                <input type="text" name="Answer+@pom" id="@answer.AnswerId" value="@answer.Text" />
+                            </td>
+                            qCount++;
+                        }
+                    </tr>
+
+                    pom++;
+                    @*<td> <input type="button" value="Delete question" id="DeleteQuestion" /></td>*@
+                }
+    //  <input type="hidden" id="pomId" name="pomId" value="@pom"></input>
+            }
+
+        </table>
+    }
+
+    <input type="button" value="Submit test" id="submitTest" />
+
