@@ -99,7 +99,7 @@ msgstr ""
 msgid "Add user to this group (Optional)"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:61
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:77
 msgid "About"
 msgstr "O nama"
 
@@ -111,7 +111,7 @@ msgstr "Stranica za opis aplikacije"
 msgid "Use this area to provide additional information"
 msgstr "Iskoristite ovaj prostor za dodatne informacije"
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:78
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -141,7 +141,16 @@ msgstr "Grupe"
 msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:74
+#: ..\Views\Shared\_Layout.cshtml:62
+#, fuzzy
+msgid "Users"
+msgstr "Korisnicko ime"
+
+#: ..\Views\Shared\_Layout.cshtml:70
+msgid "Admin panel"
+msgstr ""
+
+#: ..\Views\Shared\_Layout.cshtml:90
 msgid "All rights reserved"
 msgstr "Sva prava zadraana"
 

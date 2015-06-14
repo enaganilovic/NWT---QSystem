@@ -70,6 +70,7 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult AdminPanel()
         {
             List<ApplicationUser> users = new List<ApplicationUser>();
@@ -80,6 +81,7 @@ namespace QuestioningSystem.Controllers
             return View(users);
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult Ban(string id)
         {
             using (var context = ApplicationDbContext.Create())
@@ -95,6 +97,7 @@ namespace QuestioningSystem.Controllers
             return RedirectToAction("AdminPanel");
         }
 
+        [Authorize(Roles = "Administrator")]
         public ActionResult UnBan(string id)
         {
             using (var context = ApplicationDbContext.Create())

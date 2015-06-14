@@ -105,7 +105,11 @@ namespace QuestioningSystem.Controllers
                 PasswordVerificationResult hashedNewPassword = UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, d.Password);
                 if (user != null && hashedNewPassword == PasswordVerificationResult.Success)
                 {
-
+                    if (user.Banned)
+                    {
+                        ModelState.AddModelError("", "Your are banned by administrator.");
+                        return new JsonResult { Data = null };
+                    }
                     await SignInAsync(user, isPersistent: false);
                     return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
 

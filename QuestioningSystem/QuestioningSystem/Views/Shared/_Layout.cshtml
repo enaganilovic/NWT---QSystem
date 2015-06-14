@@ -64,6 +64,16 @@
             <li><a> @Html.ActionLink("Explore Users", "ExploreUsers", "Account")</a></li>
           </ul>
         </li>
+           @if(User.IsInRole("Administrator"))
+            {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@_("Admin panel") <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                     <li><a> @Html.ActionLink("Manage Users", "AdminPanel", "Home")</a></li>
+                    </ul>
+                </li>
+            }
+          
                     <li>@Html.ActionLink(@_("About").ToString(), "About", "Home")</li>
                     <li>@Html.ActionLink(@_("Contact").ToString(), "Contact", "Home")</li>
                     <li><a href="@Url.Action("SetLanguage", "Language", new { @name = "hr-HR" })"><img height="17" width="30" src="~/Content/flag_of_bosnia_and_herzegovina.png"/></a></li>
