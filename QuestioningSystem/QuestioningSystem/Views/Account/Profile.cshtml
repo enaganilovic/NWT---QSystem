@@ -1,15 +1,70 @@
 ﻿@model QuestioningSystem.Models.ApplicationUser
+@using Microsoft.AspNet.Identity
+@{
+    ViewBag.Title = @_("Profile");
+}
 
 @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
 {
     <br /><br /><br />
-     @Model.UserName <br />
-     @Model.FirstName <br />
-     @Model.LastName <br />
-     @Model.Email <br />
+        <table class="table table-bordered table-hover">
+            <tr>
+                <td>
+                    @_("Username")
+                </td>
+                <td>
+                    @Model.UserName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @_("First name")
+                </td>
+                <td>
+                    @Model.FirstName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @_("Last name")
+                </td>
+                <td>
+                    @Model.LastName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @_("Email")
+                </td>
+                <td>
+                    @Model.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @_("Image")
+                </td>
+                <td>
+                   <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
+                </td>
+            </tr>
+            @if(Model.UserName == User.Identity.GetUserName())
+            {
+             <tr>
+                <td>
+                    @_("Change picture")
+                </td>
+                <td>
+                    <input type="file" name="fileImage" value="@_("Choose picture")" />
+                </td>
+            </tr>
+            }
+        </table>
 
-     @_("Image")
-     <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
-    <input type="file" name="fileImage" value="@_("Choose picture")" />
-    <input type="submit" value="@_("Change picture").ToString()" />
+     
+    if(Model.UserName == User.Identity.GetUserName())
+    {
+        <input type="submit" value="@_("Change picture").ToString()" />
+    }
+    
 }

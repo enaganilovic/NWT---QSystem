@@ -30,6 +30,13 @@ namespace QuestioningSystem
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/justified-nav.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrapjs").Include(
+                        "~/Scripts/bootstrap.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/bootstrapcss").Include(
+                        "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap-responsive.min.css"));
         }
     }
 }

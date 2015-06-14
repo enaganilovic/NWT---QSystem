@@ -41,17 +41,28 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
-        public ActionResult Profile()
+        public ActionResult Profile(string id)
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            ApplicationUser user = UserManager.FindByName(id);
             if (user == null)
             {
                 throw new Exception("Nepostojeći korisnik!");
             }
-
             return View(user);
 
         }
+
+        //public ActionResult Profile()
+        //{
+        //    ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+        //    if (user == null)
+        //    {
+        //        throw new Exception("Nepostojeći korisnik!");
+        //    }
+
+        //    return View(user);
+
+        //}
 
         [HttpPost]
         public ActionResult Profile(HttpPostedFileBase fileImage)
@@ -71,6 +82,16 @@ namespace QuestioningSystem.Controllers
             return RedirectToAction("Profile");
         }
 
+        public ActionResult ExploreUsers()
+        {
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            using (var context = ApplicationDbContext.Create())
+            {
+                users = context.Users.ToList();
+            }
+            return View(users);
+        }
+
         //
         // POST: /Account/Login
         [HttpPost]
@@ -82,13 +103,29 @@ namespace QuestioningSystem.Controllers
             {            
                 var user = await UserManager.FindByNameAsync(d.UserName);
                 PasswordVerificationResult hashedNewPassword = UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, d.Password);
-                if (user != null && hashedNewPassword == PasswordVerificationResult.Success && user.ConfirmedEmail )
+                if (user != null && hashedNewPassword == PasswordVerificationResult.Success)
                 {
-                        await SignInAsync(user, isPersistent: false);
-                        return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+                    if (user.Banned)
+                    {
+                        ModelState.AddModelError("", "Your are banned by administrator.");
+                        return new JsonResult { Data = null };
+                    }
+                    await SignInAsync(user, isPersistent: false);
+                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+
+                    if(user.ConfirmedEmail == true)
+                    {
+                        await SignInAsync(user, d.RememberMe);
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else 
+                    {
+                        ModelState.AddModelError("", "Confirm Email Address."); 
+                    }
+
                 }
                 else {
-                    ModelState.AddModelError("", "Invalid name or password. Please check your credentials or if you confirmed your email.");
+                    ModelState.AddModelError("", "Invalid name or password.");
                     return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
             }
@@ -147,6 +184,8 @@ namespace QuestioningSystem.Controllers
                 var user = new ApplicationUser() { UserName = model.UserName }; 
                 user.Email = model.Email;
                 user.Banned = false;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
                 user.ConfirmedEmail = false; 
                 var result = await UserManager.CreateAsync(user, model.Password); 
                 if (result.Succeeded) 
