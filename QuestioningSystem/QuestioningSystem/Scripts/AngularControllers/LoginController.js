@@ -28,7 +28,7 @@
                 $scope.Success = true;
             }
             else {
-                $scope.Message = "Invalid name or password. Please check your credentials or if you confirmed your email."
+                $scope.Message = "Invalid name or password.Please check your credentials or if you confirmed your email."
                 $scope.showSuccessAlert(false);
                 $scope.Success = false;
             }
