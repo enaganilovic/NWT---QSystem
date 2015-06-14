@@ -105,7 +105,7 @@ msgstr ""
 msgid "Add user to this group (Optional)"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:77
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:61
 msgid "About"
 msgstr ""
 
@@ -117,7 +117,7 @@ msgstr ""
 msgid "Use this area to provide additional information"
 msgstr ""
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:78
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
 msgid "Contact"
 msgstr ""
 
@@ -145,15 +145,7 @@ msgstr ""
 msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:62
-msgid "Users"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:70
-msgid "Admin panel"
-msgstr ""
-
-#: ..\Views\Shared\_Layout.cshtml:90
+#: ..\Views\Shared\_Layout.cshtml:74
 msgid "All rights reserved"
 msgstr ""
 
