@@ -4,14 +4,14 @@
 
 <table class="table">
     <tr>
-        <th>Question @Model</th>
-        <td><input type="text" name="Question" /></td>
-        <th>Points:</th>
-        <td><input type="text" name="Point" /></td>
+        <td class="labelStyle" font">Question @Model</td>
+        <td ><input type="text" name="Question" /></td>
+        <td class="labelStyle" font">Points:
+        <input type="text" name="Point" /></td>
     </tr>
 
     <tr>
-        <th> Answers </th>
+        <td class="labelStyle" font"> Answers </td>
         <td>
             <input type="radio" name="@String.Format("correct{0}", @Model)" value="1" />
             <input type="text" name="Answer1" />

@@ -1,5 +1,5 @@
 ﻿@model QuestioningSystem.Models.ApplicationUser
-
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = @_("Profile");
 }
@@ -48,7 +48,9 @@
                    <img src="@Url.Content("/Images/" + Model.UserName + ".jpg")" alt="Profile picture" height="300" width="300" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
                 </td>
             </tr>
-            <tr>
+            @if(Model.UserName == User.Identity.GetUserName())
+            {
+             <tr>
                 <td>
                     @_("Change picture")
                 </td>
@@ -56,11 +58,13 @@
                     <input type="file" name="fileImage" value="@_("Choose picture")" />
                 </td>
             </tr>
-
-
+            }
         </table>
 
      
+    if(Model.UserName == User.Identity.GetUserName())
+    {
+        <input type="submit" value="@_("Change picture").ToString()" />
+    }
     
-    <input type="submit" value="@_("Change picture").ToString()" />
 }

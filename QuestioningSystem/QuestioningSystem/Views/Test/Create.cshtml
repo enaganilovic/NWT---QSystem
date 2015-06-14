@@ -78,15 +78,25 @@
 <br />
 @{
     int a = 1;
-    <div> <strong> Test name: </strong> </div>
-    <input type="text" name="TestName" />
-    <div> <strong> Duration: </strong> </div>
-    <input type="number" name="DurationTime" />
-    <div> <strong> Date: </strong> </div>
-    <input type="date" name="Date" />
-    <div> <strong> Time: </strong> </div>
-    <input type="time" name="Time" />
+<table>
+<tr>
 
+   <td class="labelStyle" font"> <div> <strong> Test name: </strong> </div></td>
+   <td>  <input type="text" name="TestName" /></td> 
+</tr>
+<tr>
+    <td class="labelStyle" font"> <div> <strong> Duration: </strong> </div></td> 
+    <td> <input type="number" name="DurationTime" /></td> 
+</tr>
+<tr>
+    <td class="labelStyle" font"><div> <strong> Date: </strong> </div></td>
+    <td><input type="date" name="Date" /></td>
+</tr>
+<tr>
+    <td class="labelStyle" font"><div> <strong> Time: </strong> </div></td>
+    <td><input type="time" name="Time" /></td>
+</tr>
+</table>
 
     <br />
 }
