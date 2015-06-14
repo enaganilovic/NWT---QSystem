@@ -82,25 +82,13 @@ namespace QuestioningSystem.Controllers
             {            
                 var user = await UserManager.FindByNameAsync(d.UserName);
                 PasswordVerificationResult hashedNewPassword = UserManager.PasswordHasher.VerifyHashedPassword(user.PasswordHash, d.Password);
-                if (user != null && hashedNewPassword == PasswordVerificationResult.Success)
+                if (user != null && hashedNewPassword == PasswordVerificationResult.Success && user.ConfirmedEmail )
                 {
-
-                    await SignInAsync(user, isPersistent: false);
-                    return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
-
-                    if(user.ConfirmedEmail == true)
-                    {
-                        await SignInAsync(user, d.RememberMe);
-                        return RedirectToLocal(returnUrl);
-                    }
-                    else 
-                    {
-                        ModelState.AddModelError("", "Confirm Email Address."); 
-                    }
-
+                        await SignInAsync(user, isPersistent: false);
+                        return new JsonResult { Data = user, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
                 else {
-                    ModelState.AddModelError("", "Invalid name or password.");
+                    ModelState.AddModelError("", "Invalid name or password. Please check your credentials or if you confirmed your email.");
                     return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
                 }
             }

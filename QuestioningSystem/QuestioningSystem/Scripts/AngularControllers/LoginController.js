@@ -28,12 +28,11 @@
                 $scope.Success = true;
             }
             else {
-                $scope.Message = "Invalid credentials!"
+                $scope.Message = "Invalid name or password. Please check your credentials or if you confirmed your email."
                 $scope.showSuccessAlert(false);
                 $scope.Success = false;
             }
-                    });
-
+        });
     };
 })
 .factory('LoginService', function ($http) {
