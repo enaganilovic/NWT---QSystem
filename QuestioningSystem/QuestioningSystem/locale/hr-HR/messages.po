@@ -2,14 +2,19 @@
 msgid "Target"
 msgstr ""
 
-#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:27
-msgid "Log in"
-msgstr "Prijava"
-
-#: ..\Views\Account\Login.cshtml:19 ..\Views\Account\Register.cshtml:23
+#: ..\Views\Account\ExploreUsers.cshtml:12 ..\Views\Account\Login.cshtml:19
+#: ..\Views\Account\Profile.cshtml:13 ..\Views\Account\Register.cshtml:23
 #: ..\Views\Home\AdminPanel.cshtml:15
 msgid "Username"
 msgstr "Korisnicko ime"
+
+#: ..\Views\Account\ExploreUsers.cshtml:23 ..\Views\Account\Profile.cshtml:4
+msgid "Profile"
+msgstr ""
+
+#: ..\Views\Account\Login.cshtml:4 ..\Views\Shared\_LoginPartial.cshtml:28
+msgid "Log in"
+msgstr "Prijava"
 
 #: ..\Views\Account\Login.cshtml:22 ..\Views\Account\Register.cshtml:27
 #: ..\Views\Group\Create.cshtml:22
@@ -20,26 +25,36 @@ msgstr "Korisnicko ime obavezno"
 msgid "Password"
 msgstr "Sifra"
 
-#: ..\Views\Account\Profile.cshtml:4
-msgid "Profile"
-msgstr ""
+#: ..\Views\Account\Profile.cshtml:21
+#, fuzzy
+msgid "First name"
+msgstr "Ime"
 
-#: ..\Views\Account\Profile.cshtml:15
+#: ..\Views\Account\Profile.cshtml:29
+#, fuzzy
+msgid "Last name"
+msgstr "Prezime"
+
+#: ..\Views\Account\Profile.cshtml:37 ..\Views\Account\Register.cshtml:64
+msgid "Email"
+msgstr "Email"
+
+#: ..\Views\Account\Profile.cshtml:45
 msgid "Image"
 msgstr ""
 
+#: ..\Views\Account\Profile.cshtml:55
+msgid "Change picture"
+msgstr ""
+
 #: ..\Views\Account\Register.cshtml:7 ..\Views\Account\Register.cshtml:10
-#: ..\Views\Shared\_LoginPartial.cshtml:26
+#: ..\Views\Shared\_LoginPartial.cshtml:27
 msgid "Register"
 msgstr "Registracija"
 
 #: ..\Views\Account\Register.cshtml:56
 msgid "Confirm Password"
 msgstr "Potvrda sifre"
-
-#: ..\Views\Account\Register.cshtml:64
-msgid "Email"
-msgstr "Email"
 
 #: ..\Views\Account\Register.cshtml:78
 msgid "First Name"
@@ -138,7 +153,7 @@ msgstr "Odjava"
 msgid "Hello "
 msgstr "Pozdrav "
 
-#: ..\Views\Shared\_LoginPartial.cshtml:17
+#: ..\Views\Shared\_LoginPartial.cshtml:18
 msgid "My Profile"
 msgstr ""
 

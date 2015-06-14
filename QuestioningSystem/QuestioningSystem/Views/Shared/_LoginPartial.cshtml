@@ -10,7 +10,7 @@
             @Html.ActionLink(@_("Hello ").ToString() + User.Identity.GetUserName() + "!", "Manage", "Account", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li>
-                        <a href="~/Account/Profile">
+                        <a href=@Url.Content("/Account/Profile/" + User.Identity.GetUserName())>
                         <img src="@Url.Content("/Images/" + User.Identity.GetUserName() + ".jpg")" alt="Profile picture" height="30" width="30" onerror="if (this.src != 'error.jpg') this.src = location.protocol + '//' + location.host + '/error.jpg';"/>
                         </a>
         </li>

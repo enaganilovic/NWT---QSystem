@@ -41,17 +41,28 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
-        public ActionResult Profile()
+        public ActionResult Profile(string id)
         {
-            ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+            ApplicationUser user = UserManager.FindByName(id);
             if (user == null)
             {
                 throw new Exception("Nepostojeći korisnik!");
             }
-
             return View(user);
 
         }
+
+        //public ActionResult Profile()
+        //{
+        //    ApplicationUser user = UserManager.FindById(User.Identity.GetUserId());
+        //    if (user == null)
+        //    {
+        //        throw new Exception("Nepostojeći korisnik!");
+        //    }
+
+        //    return View(user);
+
+        //}
 
         [HttpPost]
         public ActionResult Profile(HttpPostedFileBase fileImage)
@@ -69,6 +80,16 @@ namespace QuestioningSystem.Controllers
             }
 
             return RedirectToAction("Profile");
+        }
+
+        public ActionResult ExploreUsers()
+        {
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            using (var context = ApplicationDbContext.Create())
+            {
+                users = context.Users.ToList();
+            }
+            return View(users);
         }
 
         //

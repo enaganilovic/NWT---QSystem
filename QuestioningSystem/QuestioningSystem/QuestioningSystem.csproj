@@ -1118,6 +1118,7 @@
     <Content Include="Views\Notifications\SaveNotification.cshtml" />
     <Content Include="Views\Group\Assign.cshtml" />
     <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\ExploreUsers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
