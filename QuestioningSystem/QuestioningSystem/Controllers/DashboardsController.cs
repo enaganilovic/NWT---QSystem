@@ -102,6 +102,31 @@ namespace QuestioningSystem.Controllers
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
+        public ActionResult Exams()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> PassedExams()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            List<string> naziv = new List<string>();
+            List<int> brojBodova = new List<int>();
+            var tests = context.FinishedTests.Where(x => x.User.UserName == User.Identity.Name).Include(x => x.Test).ToList();
+            foreach (var test in tests)
+            {
+                var pom = context.Tests.Where(x => x.ID == test.Test.ID).FirstOrDefault();
+                naziv.Add(pom.Title);
+                brojBodova.Add(test.NumberOfPoints);
+            }
+            var result = new { Titles = naziv, Numbers = brojBodova };
+            if (result != null)
+                return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
         [Authorize]
         [HttpPost]
         public async Task<ActionResult> GetTestChart()

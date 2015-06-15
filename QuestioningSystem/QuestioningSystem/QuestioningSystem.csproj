@@ -1132,6 +1132,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Dashboards\GroupTests.cshtml" />
+    <Content Include="Views\Dashboards\Exams.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Start\App_Data\" />
