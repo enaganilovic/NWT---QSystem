@@ -53,6 +53,14 @@
     <Reference Include="CSharp.GitHub">
       <HintPath>..\packages\CSharp.GitHub.0.1.4500.22863\lib\net40\CSharp.GitHub.dll</HintPath>
     </Reference>
+    <Reference Include="i18n, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1cb4ffe2b78a7757, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\i18n\bin\lib\net40\i18n.dll</HintPath>
+    </Reference>
+    <Reference Include="i18n.PostBuild, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\i18n\bin\lib\net40\i18n.PostBuild.exe</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="SendGrid.SmtpApi">
       <HintPath>..\packages\SendGrid.SmtpApi.1.2.1\lib\net40\SendGrid.SmtpApi.dll</HintPath>
@@ -1154,16 +1162,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Libraries\i18n\src\i18n.PostBuild\i18n.PostBuild.csproj">
-      <Project>{9be8e007-c6b8-43f7-83d2-e89f51ef8614}</Project>
-      <Name>i18n.PostBuild</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Libraries\i18n\src\i18n\i18n.csproj">
-      <Project>{e7a9bba3-8a95-492c-8806-4de63c1dba06}</Project>
-      <Name>i18n</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
