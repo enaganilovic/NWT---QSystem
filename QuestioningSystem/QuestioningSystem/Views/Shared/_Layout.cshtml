@@ -37,8 +37,9 @@
           <ul class="dropdown-menu" role="menu">
               <li role="presentation">@Html.ActionLink("Create test", "Create", "Test")</li>
               <li role="presentation">@Html.ActionLink("Manage test", "Manage", "Test")</li>
-            <li><a href="#">@_("My tests")</a></li>
+              <li role="presentation">@Html.ActionLink("My tests", "MyTests", "Test")</li>
               <li role="presentation">@Html.ActionLink("Explore tests", "ExploreTests", "Test")</li>
+              <li role="presentation">@Html.ActionLink("Completed tests", "CompletedTests", "Test")</li>
           </ul>
         </li>
           <li class="dropdown">
