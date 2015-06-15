@@ -41,7 +41,7 @@
                         if (pomocna == 0)
                         {
                             <td>@group.GroupTitle  </td>
-                            <form action="@Url.Action("SaveNotification", "Notification")" method="post">
+                            <form action="@Url.Action("SaveNotification", "Notifications")" method="post">
                                 <input type="hidden" id="GroupId" name="GroupId" value="@group.GroupId" />
                                 <input type="hidden" id="CreatorName" name="CreatorName" value="@item.Creator" />
                                 <input type="hidden" id="Type" name="Type" value="1" />
@@ -53,7 +53,7 @@
                         {
                         <tr>
                             <td>@group.GroupTitle  </td>
-                            <form action="@Url.Action("SaveNotification", "Notification")" method="post">
+                            <form action="@Url.Action("SaveNotification", "Notifications")" method="post">
                                 <input type="hidden" id="GroupId" name="GroupId" value="@group.GroupId" />
                                 <input type="hidden" id="CreatorName" name="CreatorName" value="@item.Creator" />
                                 <input type="hidden" id="Type" name="Type" value="1" />

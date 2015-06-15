@@ -64,16 +64,10 @@
 </script>
 
 @{
-<table>
-<tr>  
-<td class="labelStyle" font"><div> <strong> Test name: </strong> </div></td>
-   <td> <input type="text" name="TestName" value='@Model.TestName' /></td>
-</tr> 
-<tr>
-<td class="labelStyle" font"><div> <strong> Duration: </strong> </div></td>
-    <td><input type="number" name="DurationTime" value="@Model.DurationTime" /></td>
-</tr>
-</table>
+    <div> <strong> Test name: </strong> </div>
+    <input type="text" name="TestName" value='@Model.TestName' />
+    <div> <strong> Duration: </strong> </div>
+    <input type="number" name="DurationTime" value="@Model.DurationTime" />
     <br />
 }
 

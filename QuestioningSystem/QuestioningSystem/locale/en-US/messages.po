@@ -28,7 +28,7 @@ msgid "Log in"
 msgstr ""
 
 #: ..\Views\Account\Login.cshtml:22 ..\Views\Account\Register.cshtml:27
-#: ..\Views\Group\Create.cshtml:22
+#: ..\Views\Group\Create.cshtml:25
 msgid "Username required"
 msgstr ""
 
@@ -93,15 +93,15 @@ msgstr ""
 msgid "Confirm New Password"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:18
+#: ..\Views\Group\Create.cshtml:21
 msgid "Group title"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:34
+#: ..\Views\Group\Create.cshtml:39
 msgid "Maximal number of members"
 msgstr ""
 
-#: ..\Views\Group\Create.cshtml:41
+#: ..\Views\Group\Create.cshtml:46
 msgid "Add user to this group (Optional)"
 msgstr ""
 

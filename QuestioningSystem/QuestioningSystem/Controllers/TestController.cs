@@ -205,7 +205,7 @@ namespace QuestioningSystem.Controllers
 
             using (var context = ApplicationDbContext.Create())
             {
-                var query = context.Tests.Where(x => x.Creator.UserName != User.Identity.Name).Include(x => x.Creator).ToList();
+                var query = context.Tests.Where(x => x.Creator.UserName != User.Identity.Name).Include(x => x.Creator).Include(x => x.Groups).ToList();
                 foreach (var item in query)
                 {
                     GroupsForExploreTest groups = new GroupsForExploreTest();
@@ -230,6 +230,144 @@ namespace QuestioningSystem.Controllers
                 }
             }
             return View(model);
+        }
+
+        public ActionResult MyTests()
+        {
+            TestModels model = new TestModels();
+            model.listOfTest = new List<TestModel>();
+            List<ApplicationUser> users = new List<ApplicationUser>();
+            ICollection<Group> testGroups;
+            // bool added = false;
+            using (var context = ApplicationDbContext.Create())
+            {
+                var user = context.Users.Where(x => x.UserName == User.Identity.Name).FirstOrDefault();
+                var groups = new List<Group>();
+                var query = context.Groups.Where(x => 1 == 1).Include(x => x.Members).ToList();
+                foreach (var group in query)
+                {
+                    if (group.Members.Contains(user))
+                    {
+                        groups.Add(group);
+                    }
+                }
+                var tests = new List<Test>();
+                var query2 = context.Tests.Where(x => x.Creator.UserName != User.Identity.Name).Include(x => x.Groups).Include(x => x.Creator).ToList();
+                foreach (var item in query2)
+                {
+                    for (int i = 0; i < groups.Count; i++)
+                    {
+                        if (item.Groups.Contains(groups[i]))
+                        {
+                            tests.Add(item);
+                        }
+                    }
+                }
+                foreach (var item in tests)
+                {
+                    testGroups = item.Groups;
+                    model.listOfTest.Add(new TestModel
+                    {
+                        TestName = item.Title,
+                        Creator = item.Creator.UserName,
+                        DateTime = item.DateTime.ToString(),
+                        DurationTime = item.Duration,
+                        ID = item.ID
+                    });
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult JoinTest(int Id)
+        {
+            TestModel test = new TestModel();
+            List<QuestionAnswerPair> questionAnswerPairs = new List<QuestionAnswerPair>();
+            // atributi 
+            // public string Question { get; set; }
+            // public List<QuestionAnswer> Answers { get; set; }
+            using (var context = ApplicationDbContext.Create())
+            {
+                var tests = context.Tests.Where(x => x.ID == Id).Include(x => x.Creator).FirstOrDefault();
+                test.TestName = tests.Title;
+                test.Creator = tests.Creator.UserName;
+                test.DurationTime = tests.Duration;
+                test.DateTime = tests.DateTime.ToString();
+                test.ID = tests.ID;
+                test.QuestionAnswerPairs = new List<QuestionAnswerPair>();
+                var questions = context.Questions.Where(x => x.Test.ID == tests.ID).ToList();
+                foreach (var question in questions)
+                {
+                    var answers = context.Answers.Where(x => x.Question.ID == question.ID).ToList();
+                    QuestionAnswerPair pair = new QuestionAnswerPair();
+
+                    foreach (var answer in answers)
+                    {
+                        QuestionAnswer qA = new QuestionAnswer();
+                        qA.Text = answer.Text;
+                        qA.IsChecked = answer.Correct;
+                        qA.AnswerId = answer.ID;
+                        pair.Answers.Add(qA);
+                    }
+                    pair.Question = question.Text;
+                    pair.QuestionID = question.ID;
+                    test.QuestionAnswerPairs.Add(pair);
+                }
+
+            }
+            return View(test);
+        }
+
+
+        public ActionResult SaveCompletedTest(TestModel model)
+        {
+            int numberOfPoints = 0;
+            FinishedTests finishedTest = new FinishedTests();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var loggedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                var test = context.Tests.Where(x => x.ID == model.ID).First();
+                finishedTest.Test = test;
+                finishedTest.User = loggedUser;
+                finishedTest.DateTime = DateTime.Now;
+                foreach (var q in model.QuestionAnswerPairs)
+                {
+                    if (q.Question != null)
+                    {
+                        var question = context.Questions.Where(x => x.ID == q.QuestionID).First();
+                        finishedTest.Question = question;
+                        continue;
+                    }
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (q.Answers[i].IsChecked == true)
+                        {
+                            var answerID = q.Answers[i].AnswerId;
+                            var answer = context.Answers.Where(x => x.ID == answerID).First();
+                            if (answer.Correct == true)
+                                numberOfPoints += finishedTest.Question.Points;
+                            finishedTest.CorrectAnswer = answer;
+                            var correctAnswer = context.Answers.Where(x => x.ID == answer.ID).Select(x => x.Correct).First();
+                            finishedTest.IsCorrect = correctAnswer;
+                        }
+                    }
+                    finishedTest.NumberOfPoints = numberOfPoints;
+                    context.FinishedTests.Add(finishedTest);
+                    context.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ViewResult CompletedTests()
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
+                var completedTests = context.FinishedTests.Where(x => x.User.Id == logedUser.Id).OrderByDescending(x => x.DateTime).ToList();
+            }
+            return View();
         }
 
       
