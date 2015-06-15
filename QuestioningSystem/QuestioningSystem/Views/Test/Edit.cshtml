@@ -64,10 +64,16 @@
 </script>
 
 @{
-    <div> <strong> Test name: </strong> </div>
-    <input type="text" name="TestName" value='@Model.TestName' />
-    <div> <strong> Duration: </strong> </div>
-    <input type="number" name="DurationTime" value="@Model.DurationTime" />
+<table>
+<tr>
+    <td class="labelStyle"><div> <strong> Test name: </strong> </div></td>
+    <td><input type="text" name="TestName" value='@Model.TestName' /></td>
+</tr>
+<tr>
+   <td class="labelStyle"> <div> <strong> Duration: </strong> </div></td>
+    <td><input type="number" name="DurationTime" value="@Model.DurationTime" /></td>
+</tr>
+</table>
     <br />
 }
 
@@ -82,7 +88,7 @@
         {
 
             <tr>
-                <th> Question @pom</th>
+                <td class="labelStyle"> Question @pom</td>
                 <td><input type="text" name="Question" value="@question.Question" /></td>
             </tr>
             <tr>
@@ -90,7 +96,7 @@
                 @foreach (var answer in @question.Answers)
                 {
                     qCount = 0;
-                    <td>
+                    <td class="labelStyle">
                         Answers:
                         @if (answer.IsChecked)
                         {
