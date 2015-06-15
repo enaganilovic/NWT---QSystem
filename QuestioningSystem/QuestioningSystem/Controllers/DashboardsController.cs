@@ -29,6 +29,11 @@ namespace QuestioningSystem.Controllers
             return View();
         }
 
+        public ActionResult GroupTests()
+        {
+            return View();
+        }
+
         public ActionResult Test()
         {
             return View();
@@ -73,6 +78,27 @@ namespace QuestioningSystem.Controllers
                 var result = new { Usernames = usernames, Numbers = numberOfGroups };
                 if (result != null)
                     return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> GetGroupTestChart()
+        {
+            ApplicationDbContext context = new ApplicationDbContext();
+            List<string> groups = new List<string>();
+            List<int> numberOfTests = new List<int>();
+            var groupsDB = context.Groups.ToList();
+            foreach (var group in groupsDB)
+            {
+                groups.Add(group.Title);
+                int testsByGroup = context.Tests.Where(x => x.Groups.Count(y => y.ID == group.ID) > 0).Count();
+                numberOfTests.Add(testsByGroup);
+            }
+
+            var result = new { Groups = groups, Numbers = numberOfTests };
+            if (result != null)
+                return new JsonResult { Data = result, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
             return new JsonResult { Data = null, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
         }
 
