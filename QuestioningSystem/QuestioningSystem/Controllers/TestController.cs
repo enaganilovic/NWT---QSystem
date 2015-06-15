@@ -362,14 +362,76 @@ namespace QuestioningSystem.Controllers
 
         public ViewResult CompletedTests()
         {
+            ListCompletedTestViewModel lista = new ListCompletedTestViewModel();
+            lista.list = new List<CompletedTestViewModel>();
+            
             using (var context = ApplicationDbContext.Create())
             {
+                var query = context.FinishedTests.Where(x => x.User.UserName == User.Identity.Name).Include(x => x.Test).ToList();
+                foreach (var item in query)
+                {
+                    var test = context.Tests.Where(x => x.ID == item.Test.ID).Include(x => x.Creator).FirstOrDefault();
+                    lista.list.Add(new CompletedTestViewModel {
+                        CompletedTestID = item.ID.ToString(),
+                        TestID = test.ID.ToString(),
+                        DateTime = item.DateTime,
+                        MaxPoints = test.Points,
+                        NumberOfPoints = item.NumberOfPoints,
+                        CreatorName = test.Creator.UserName,
+                        TestName = test.Title
+                    });
+                }
                 var logedUser = context.Users.Where(x => x.UserName == User.Identity.Name).First();
                 var completedTests = context.FinishedTests.Where(x => x.User.Id == logedUser.Id).OrderByDescending(x => x.DateTime).ToList();
             }
-            return View();
+            return View(lista);
         }
 
-      
+        
+
+        public ViewResult ViewCompletedTest(string TestId2, string CompletedTestId2)
+        {
+            int TestIdint = Int32.Parse(TestId2);
+            int CompletedTestId = Int32.Parse(CompletedTestId2);
+            TestModel test = new TestModel();
+
+            List<QuestionAnswerPair> questionAnswerPairs = new List<QuestionAnswerPair>();
+            using (var context = ApplicationDbContext.Create())
+            {
+                var tests = context.Tests.Where(x => x.ID == TestIdint).FirstOrDefault();
+                var CompletedTest = context.FinishedTests.Where(x => x.ID == CompletedTestId);
+                test.TestName = tests.Title;
+                test.Creator = User.Identity.Name;
+                test.DurationTime = tests.Duration;
+                test.DateTime = tests.DateTime.ToString();
+                test.ID = tests.ID;
+                test.QuestionAnswerPairs = new List<QuestionAnswerPair>();
+
+                var questions = context.Questions.Where(x => x.Test.ID == tests.ID).ToList();
+                foreach (var question in questions)
+                {
+                    var answers = context.Answers.Where(x => x.Question.ID == question.ID).ToList();
+                    QuestionAnswerPair pair = new QuestionAnswerPair();
+
+                    foreach (var answer in answers)
+                    {
+                        QuestionAnswer qA = new QuestionAnswer();
+                        qA.Text = answer.Text;
+                        qA.IsChecked = answer.Correct;
+                        qA.AnswerId = answer.ID;
+                        pair.Answers.Add(qA);
+                    }
+                    var answerUser = context.FinishedTests.Where(x => x.Question.ID == question.ID).Include(x => x.Test).Include(x => x.Question).First();
+
+
+                    pair.Question = question.Text;
+                    pair.QuestionID = question.ID;
+                    test.QuestionAnswerPairs.Add(pair);
+                }
+            }
+            //test.QuestionAnswerPairs = questionAnswerPairs;
+            return View(test);
+        }
+
 	}
 }

@@ -1,0 +1,58 @@
+﻿@model  QuestioningSystem.ViewModels.TestModel
+
+@{
+    ViewBag.Title = "ViewCompletedTest";
+}
+
+@{
+    <strong>
+        <div class="col-md-3"> Test name</div>    <div class="col-md-3"> Duration</div>    <div class="col-md-3"> Creator</div><div class="col-md-3"> Date and Time</div>
+    </strong>
+    <br />
+    <div class="col-md-3">@Model.TestName</div>
+    <div class="col-md-3">@Model.DurationTime min</div>
+    <div class="col-md-3">@Model.Creator</div>
+    <div class="col-md-3">@Model.DateTime</div>
+
+
+
+    <br />
+
+    <div class="remaining" id=""><span class="remain"></span></div>
+
+    <br />
+    <table class="table" id="tabela" name="tabela">
+
+        @{
+            int qCount = 0;
+            int pom = 1;
+            foreach (var question in @Model.QuestionAnswerPairs)
+            {
+
+                <tr>
+                    <th> Question @pom </th>
+                    <td> <input type="text" name="Question" id="@question.QuestionID " value="@question.Question" /></td>
+                    <th> Question answer </th>
+                    <td> <input type="text" name="Question" id="Answer " value="@question.UserAnswer" /></td>
+                </tr>
+                <tr>
+                    @foreach (var answer in @question.Answers)
+                    {
+                        qCount = 0;
+                        <td>
+
+                            <input type="radio" value="@qCount.ToString() " name="@pom" />
+                            <input type="text" name="Answer+@pom" id="@answer.AnswerId" value="@answer.Text" />
+                        </td>
+                        qCount++;
+                    }
+                </tr>
+
+                pom++;
+                @*<td> <input type="button" value="Delete question" id="DeleteQuestion" /></td>*@
+            }
+    //  <input type="hidden" id="pomId" name="pomId" value="@pom"></input>
+        }
+
+    </table>
+}

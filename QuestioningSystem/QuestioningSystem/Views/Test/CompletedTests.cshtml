@@ -1,0 +1,25 @@
+﻿@model QuestioningSystem.Models.ListCompletedTestViewModel
+@{
+    ViewBag.Title = "CompletedTests";
+}
+
+<br />
+<br />
+<table class="table-bordered">
+    <tr>
+        <th> Test title </th>
+        <th> Date time </th>
+        <th> Maximum points </th>
+        <th> Your points </th>
+    </tr>
+    @foreach (var item in @Model.list)
+    {
+        <tr>
+            <td> @item.TestName</td> 
+            <td> @item.DateTime </td>
+            <td> @item.MaxPoints </td>
+            <td> @item.NumberOfPoints </td>
+        </tr>
+    }
+</table>
+

@@ -99,7 +99,7 @@ msgstr ""
 msgid "Add user to this group (Optional)"
 msgstr ""
 
-#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:61
+#: ..\Views\Home\About.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
 msgid "About"
 msgstr "O nama"
 
@@ -111,7 +111,7 @@ msgstr "Stranica za opis aplikacije"
 msgid "Use this area to provide additional information"
 msgstr "Iskoristite ovaj prostor za dodatne informacije"
 
-#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:62
+#: ..\Views\Home\Contact.cshtml:2 ..\Views\Shared\_Layout.cshtml:63
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -128,20 +128,15 @@ msgstr "Podrka"
 msgid "Tests"
 msgstr "Testovi"
 
-#: ..\Views\Shared\_Layout.cshtml:40
-#, fuzzy
-msgid "My tests"
-msgstr "Moji testovi"
-
-#: ..\Views\Shared\_Layout.cshtml:45
+#: ..\Views\Shared\_Layout.cshtml:46
 msgid "Groups"
 msgstr "Grupe"
 
-#: ..\Views\Shared\_Layout.cshtml:52
+#: ..\Views\Shared\_Layout.cshtml:53
 msgid "Dashboards"
 msgstr ""
 
-#: ..\Views\Shared\_Layout.cshtml:74
+#: ..\Views\Shared\_Layout.cshtml:75
 msgid "All rights reserved"
 msgstr "Sva prava zadraana"
 
@@ -156,6 +151,10 @@ msgstr "Pozdrav "
 #: ..\Views\Shared\_LoginPartial.cshtml:18
 msgid "My Profile"
 msgstr ""
+
+#, fuzzy
+#~ msgid "My tests"
+#~ msgstr "Moji testovi"
 
 #, fuzzy
 #~ msgid "Users"
