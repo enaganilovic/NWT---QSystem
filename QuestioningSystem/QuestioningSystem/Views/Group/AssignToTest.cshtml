@@ -16,7 +16,7 @@
                     url: "/Group/Assign",
                     data: { groupId: $( "#groupID option:selected" ).val(), testId: testId },
                     success: function () {
-
+                        window.location.href = '/Home/Index';
                     }
                 });
             });
